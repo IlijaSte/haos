@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114139724048064300}
   - component: {fileID: 114655294139945722}
   m_Layer: 5
-  m_Name: HalfCurveButton
+  m_Name: halfcurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
