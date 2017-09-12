@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+public class SplashScreen : MonoBehaviour {
+
+	public CanvasGroup panel;
+	public PlaySimulation ps;
+
+	public void restart(){
+		BallRespawn.respawnBall ();
+		//PlaySimulation.isSimActive = false;
+		ps.PlaySim ();
+		panel.alpha = 0;
+		panel.blocksRaycasts = false;
+	}
+
+	public void nextLevel(){
+		SceneManager.LoadScene (BallRespawn.staticNext);
+	}
+}
