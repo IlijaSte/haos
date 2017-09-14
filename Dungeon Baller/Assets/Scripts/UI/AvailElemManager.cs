@@ -11,12 +11,10 @@ public class AvailElemManager : MonoBehaviour {
 	public GameObject setdir;
 	public GameObject ramp;
 	public GameObject curve;
-	public GameObject halfCurve;
 	public GameObject pistonBlock;
 	private GameObject placing;
 	public int blockNum;
 	public int curveNum;
-	public int halfcurveNum;
 	public int setdirNum;
 	public int rampNum;
 	public int pistonBlockNum;
@@ -46,7 +44,6 @@ public class AvailElemManager : MonoBehaviour {
 		//availElements.Add(new AvailElement(setdir, 3, "setdir"));
 		//availElements.Add(new AvailElement(ramp, 2, "ramp"));
 		availElements.Add(new AvailElement(curve, curveNum, "curve"));
-		availElements.Add(new AvailElement(halfCurve, halfcurveNum, "halfcurve"));
 		availElements.Add(new AvailElement(setdir, setdirNum, "setdir"));
 		availElements.Add(new AvailElement(ramp, rampNum, "ramp"));
 		availElements.Add (new AvailElement (pistonBlock, pistonBlockNum, "pistonblock"));
@@ -101,9 +98,7 @@ public class AvailElemManager : MonoBehaviour {
 					case "curve":
 						elem = curve;
 						break;
-					case "halfcurve":
-						elem = halfCurve;
-						break;
+
 					case "pistonblock":
 						elem = pistonBlock;
 						break;
