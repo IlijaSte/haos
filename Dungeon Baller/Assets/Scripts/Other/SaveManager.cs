@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Xml.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public static class SaveManager {
 
-	//private ArrayList classList = new ArrayList();
-
-
-	public static ArrayList dataRef = new ArrayList();
-
 	[Serializable]
 	public class SaveData
 	{
-		public ArrayList data = new ArrayList();
+		public int totalNumStars;
+		public List<int>[] allCollected;
 
 		public SaveData(){
-			data.Add(CollectDetector.totalNumCollected);
+			allCollected = new List<int>[256];
 		}
 			
 	}
@@ -26,34 +23,49 @@ public static class SaveManager {
 	public static void saveGame()
 	{
 		BinaryFormatter bF = new BinaryFormatter();
-		dataRef.Clear ();
-		dataRef.Add (CollectDetector.totalNumCollected);
-		//OVDE SE UBACUJU OSTALI PODACI
 
 		FileStream fileStream = new FileStream(Application.persistentDataPath + "/save/save.sav", FileMode.Create);
 
 		SaveData saveData = new SaveData();
+		saveData.totalNumStars = CollectManager.totalNumCollected;
 
+		for (int i = 0; i < 256; i++) {
 
-		bF.Serialize(fileStream, saveData);
+			saveData.allCollected[i] = CollectManager.allCollected[i];
+		}
+		//OVDE SE DODAJE JOS
+
+		XmlSerializer serializer = new XmlSerializer (typeof(SaveData));
+
+		serializer.Serialize (fileStream, saveData);
+		//bF.Serialize(fileStream, saveData);
 		fileStream.Close();
 	}
 
 	public static void loadGame()
 	{
 		BinaryFormatter bF = new BinaryFormatter();
-		if (File.Exists(Application.persistentDataPath + "/save/save.sav")){
-			FileStream fileStream = new FileStream(Application.persistentDataPath + "/save/save.sav", FileMode.Open);
+		if (File.Exists (Application.persistentDataPath + "/save/save.sav")) {
+			FileStream fileStream = new FileStream (Application.persistentDataPath + "/save/save.sav", FileMode.Open);
 
-			SaveData saveData = bF.Deserialize(fileStream) as SaveData;
-			fileStream.Close();
+			XmlSerializer serializer = new XmlSerializer (typeof(SaveData));
+			//SaveData saveData = bF.Deserialize(fileStream) as SaveData;
+			SaveData saveData = serializer.Deserialize (fileStream) as SaveData;
+			//CollectManager.allCollected = serializer.Deserialize(fileStream) as SaveData;
+			fileStream.Close ();
 
-			if(dataRef.Count == 0)
-				dataRef.Add (CollectDetector.totalNumCollected);
 
-			for (int i = 0; i < dataRef.Count; i++) {
+			CollectManager.totalNumCollected = saveData.totalNumStars;
+		
+			for (int i = 0; i < 256; i++) {
+				CollectManager.allCollected [i] = saveData.allCollected [i];
+			}
+			//OVDE SE DODAJE JOS
 
-				dataRef[i] = saveData.data [i];
+		} else {
+
+			for (int i = 0; i < 256; i++) {
+				CollectManager.allCollected [i] = new List<int> ();
 			}
 
 		}

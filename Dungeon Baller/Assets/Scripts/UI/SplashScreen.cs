@@ -13,6 +13,7 @@ public class SplashScreen : MonoBehaviour {
 		ps.PlaySim ();
 		panel.alpha = 0;
 		panel.blocksRaycasts = false;
+		GameObject.Find ("UIManager").GetComponent<CollectManager> ().tempCollected.Clear ();
 	}
 
 	public void nextLevel(){

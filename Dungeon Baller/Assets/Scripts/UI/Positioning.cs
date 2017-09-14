@@ -60,45 +60,21 @@ public class Positioning : MonoBehaviour {
 	public void RotateRight(){
 		if (placedElem.GetComponent<ElementProperties> ().rotatable) {
 
-			if (placedElem.name.Contains ("halfcurve")) {
-
-				if (Mathf.Abs (currX) >= 3) {
-					placedElem.transform.Rotate (180, 0, 0);
-					currX = 0;
-				} else {
-					placedElem.transform.Rotate (0, 90, 0);
-					currX--;
-				}
 
 
-			} else {
-
-				posAngle -= 90;
-				placedElem.transform.rotation = Quaternion.Euler (new Vector3 (placedElem.transform.rotation.eulerAngles.x, placedElem.transform.rotation.eulerAngles.y + 90, placedElem.transform.rotation.eulerAngles.z));
-		
-			}
+			posAngle -= 90;
+			placedElem.transform.rotation = Quaternion.Euler (new Vector3 (placedElem.transform.rotation.eulerAngles.x, placedElem.transform.rotation.eulerAngles.y + 90, placedElem.transform.rotation.eulerAngles.z));
+	
 		}
 	}
 
 	public void RotateLeft(){
 		if (placedElem.GetComponent<ElementProperties> ().rotatable) {
-			if (placedElem.name.Contains ("halfcurve")) {
+			
 
-				if (Mathf.Abs (currX) >= 3) {
-					placedElem.transform.Rotate (180, 0, 0);
-					currX = 0;
-				} else {
-					placedElem.transform.Rotate (0, -90, 0);
-					currX++;
-				}
+			posAngle += 90;
+			placedElem.transform.rotation = Quaternion.Euler (new Vector3 (placedElem.transform.rotation.eulerAngles.x, placedElem.transform.rotation.eulerAngles.y - 90, placedElem.transform.rotation.eulerAngles.z));
 
-
-			} else {
-
-				posAngle += 90;
-				placedElem.transform.rotation = Quaternion.Euler (new Vector3 (placedElem.transform.rotation.eulerAngles.x, placedElem.transform.rotation.eulerAngles.y - 90, placedElem.transform.rotation.eulerAngles.z));
-
-			}
 		}
 	}
 

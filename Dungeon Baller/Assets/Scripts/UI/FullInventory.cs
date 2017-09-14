@@ -19,7 +19,6 @@ public class FullInventory : MonoBehaviour {
 		availManager.availElements.Add (new AvailElemManager.AvailElement (availManager.ramp, 100, "ramp"));
 		availManager.availElements.Add (new AvailElemManager.AvailElement (availManager.curve, 100, "curve"));
 		availManager.availElements.Add (new AvailElemManager.AvailElement (availManager.pistonBlock, 100, "pistonblock"));
-		availManager.availElements.Add (new AvailElemManager.AvailElement (availManager.halfCurve, 100, "halfcurve"));
 
 	}
 }

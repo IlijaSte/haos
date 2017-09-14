@@ -13,9 +13,8 @@ public class ElementPlacing : MonoBehaviour {
 	public GameObject block;
 	public GameObject ramp;
 	public GameObject curve;
-	public GameObject halfCurve;
 	public GameObject pistonBlock;
-	public int setdirNum, blockNum, rampNum, curveNum, halfcurveNum, pistonBlockNum;
+	public int setdirNum, blockNum, rampNum, curveNum, pistonBlockNum;
 	private GameObject ground;
 	private GameObject invPanel;
 	private GameObject spawnedObjects;
@@ -45,7 +44,7 @@ public class ElementPlacing : MonoBehaviour {
 		checkImage = CheckButton.GetComponent<Image> ();
 		ground = GameObject.Find ("Plane");
 		holding = false;
-		setdirNum = blockNum = rampNum = curveNum = halfcurveNum = pistonBlockNum = 0;
+		setdirNum = blockNum = rampNum = curveNum = pistonBlockNum = 0;
 		invPanel = GameObject.Find ("InvPanel");
 		spawnedObjects = GameObject.Find ("SpawnedObjects");
 		removeToggle = false;
@@ -98,8 +97,6 @@ public class ElementPlacing : MonoBehaviour {
 			return rampNum;
 		case "curve":
 			return curveNum;
-		case "halfcurve":
-			return halfcurveNum;
 		case "pistonblock":
 			return pistonBlockNum;
 
@@ -139,9 +136,6 @@ public class ElementPlacing : MonoBehaviour {
 					break;
 				case "curve":
 					curveNum--;
-					break;
-				case "halfcurve":
-					halfcurveNum--;
 					break;
 				case "pistonblock":
 					pistonBlockNum--;
@@ -248,16 +242,7 @@ public class ElementPlacing : MonoBehaviour {
 									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.375f - 0.08f, Mathf.Round (hit.point.z));
 									placed = true;
 
-								} else if (currHold == "halfcurve") {
-
-									newObj = Instantiate (halfCurve);
-									halfcurveNum++;
-									newObj.name = "halfcurve" + halfcurveNum;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.25f, Mathf.Round (hit.point.z));
-
-									print (newObj.transform.position);
-									placed = true;
-
+								
 								} else if (currHold == "pistonblock") {
 
 									newObj = Instantiate (pistonBlock);

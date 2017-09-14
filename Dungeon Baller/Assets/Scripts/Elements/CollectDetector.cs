@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class CollectDetector : MonoBehaviour {
 
-	public static int totalNumCollected = 0;
-	public static int numCollected = 0;
-	public static ArrayList collected = new ArrayList();
+	CollectManager cm;
+
 	public GameObject ball;
 	private Transform transf;
 	private int dir = -1;
 	private float yoff = 0;
 
 	void Start(){
-
+		cm = GameObject.Find ("UIManager").GetComponent <CollectManager>();
 		transf = GetComponent<Transform> ();
 
 	}
@@ -23,9 +22,18 @@ public class CollectDetector : MonoBehaviour {
 
 		if (GetComponent<BoxCollider> ().bounds.Contains (ball.transform.position)) {
 
-			numCollected++;
-			totalNumCollected++;
-			collected.Add (transform.gameObject);
+			//numCollected++;
+			//totalNumCollected++;
+			int i = 0;
+			int index = 0;
+			foreach (Transform child in transform.parent.transform) {
+				if (child == transform) {
+					index = i;
+					break;
+				}
+				i++;
+			}
+			cm.tempCollected.Add (index);
 			GetComponent<BoxCollider> ().enabled = false;
 			transform.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			//Destroy (transform.gameObject);

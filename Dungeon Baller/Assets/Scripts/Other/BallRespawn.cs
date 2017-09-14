@@ -11,17 +11,21 @@ public class BallRespawn : MonoBehaviour {
 	public float respawnY;
 	public float respawnZ;
 	public string nextLevel;
+	private CollectManager cm;
 	static public string staticNext;
 	public PlaySimulation ps;
 	public CanvasGroup panel;
-	private float lastPos;
+	private static float lastPos;
 	// Use this for initialization
 	void Start () {
 		t = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody> ();
 		staticNext = nextLevel;
 		lastPos = respawnY;
-		SaveManager.loadGame ();
+		//SaveManager.loadGame ();
+		print (Application.persistentDataPath);
+
+		cm = GameObject.Find ("UIManager").GetComponent<CollectManager> ();
 	}
 
 	static public void respawnBall(){
@@ -30,18 +34,20 @@ public class BallRespawn : MonoBehaviour {
 		ball.GetComponent<Transform>().position = new Vector3 (br.respawnX, br.respawnY, br.respawnZ);
 		ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
-		if (CollectDetector.collected.Count == 0)
+		CollectManager cm = GameObject.Find ("UIManager").GetComponent<CollectManager> ();
+		if (cm.tempCollected.Count == 0)
 			return;
+		GameObject collectibles = GameObject.Find ("Collectibles");
+		foreach (int index in cm.tempCollected) {
 
-		foreach (GameObject collectible in CollectDetector.collected) {
-
-			collectible.GetComponent<BoxCollider> ().enabled = true;
-			collectible.transform.gameObject.GetComponent<MeshRenderer> ().enabled = true;
+			collectibles.transform.GetChild(index).GetComponent<BoxCollider> ().enabled = true;
+			collectibles.transform.GetChild(index).GetComponent<MeshRenderer> ().enabled = true;
+			//collectible.GetComponent<BoxCollider> ().enabled = true;
+			//collectible.transform.gameObject.GetComponent<MeshRenderer> ().enabled = true;
 
 		}
-		CollectDetector.collected.Clear ();
-		CollectDetector.numCollected = 0;
+		cm.tempCollected.Clear ();
+		//CollectDetector.numCollected = 0;
 		//GetComponent<BoxCollider> ().enabled = false;
 		//transform.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 
@@ -52,15 +58,27 @@ public class BallRespawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (t.position.y < respawnY - 5 && lastPos >= respawnY - 5) {
-			lastPos = respawnY;
+		if (t.position.y < respawnY - 5 && panel.alpha != 1) {
+			lastPos = t.position.y;
 			//PlaySimulation.isSimActive = false;
 			GameObject stars = GameObject.Find("Stars");
 			//Image[] starImages = stars.GetComponentsInChildren<Image>();
+
+			foreach (int collectible in cm.tempCollected) {
+				cm.numCollected++;
+				CollectManager.totalNumCollected++;
+
+				CollectManager.allCollected [int.Parse(GameObject.Find("GameController").GetComponent<LevelNameHolder>().levelName)].Add (collectible); 
+			}
+			cm.tempCollected.Clear ();
+
 			int count = stars.transform.childCount;
 			int i = 0;
+			List<int> collList = null;
+
+
 			foreach (Transform star in stars.transform) {
-				if (CollectDetector.numCollected > i) {
+				if (!GameObject.Find("Collectibles").transform.GetChild(i).GetComponent<MeshRenderer>().enabled) {
 					star.gameObject.GetComponent<Image> ().sprite = star.parent.gameObject.GetComponent<StarScript>().gotImage;
 					i++;
 				} else{
@@ -72,7 +90,7 @@ public class BallRespawn : MonoBehaviour {
 
 			panel.alpha = 1;
 			panel.blocksRaycasts = true;
-			CollectDetector.collected.Clear ();
+			//cm.collected.Clear ();
 			SaveManager.saveGame ();
 			//SceneManager.LoadScene(nextLevel);
 			return;
