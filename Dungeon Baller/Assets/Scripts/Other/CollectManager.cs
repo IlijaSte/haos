@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class CollectManager : MonoBehaviour {
 
 	public static int totalNumCollected = 0;

@@ -22,7 +22,6 @@ public static class SaveManager {
 
 	public static void saveGame()
 	{
-		BinaryFormatter bF = new BinaryFormatter();
 
 		FileStream fileStream = new FileStream(Application.persistentDataPath + "/save/save.sav", FileMode.Create);
 
@@ -38,20 +37,17 @@ public static class SaveManager {
 		XmlSerializer serializer = new XmlSerializer (typeof(SaveData));
 
 		serializer.Serialize (fileStream, saveData);
-		//bF.Serialize(fileStream, saveData);
 		fileStream.Close();
 	}
 
 	public static void loadGame()
 	{
-		BinaryFormatter bF = new BinaryFormatter();
+
 		if (File.Exists (Application.persistentDataPath + "/save/save.sav")) {
 			FileStream fileStream = new FileStream (Application.persistentDataPath + "/save/save.sav", FileMode.Open);
 
 			XmlSerializer serializer = new XmlSerializer (typeof(SaveData));
-			//SaveData saveData = bF.Deserialize(fileStream) as SaveData;
 			SaveData saveData = serializer.Deserialize (fileStream) as SaveData;
-			//CollectManager.allCollected = serializer.Deserialize(fileStream) as SaveData;
 			fileStream.Close ();
 
 

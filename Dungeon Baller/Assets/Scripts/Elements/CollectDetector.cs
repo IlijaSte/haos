@@ -26,6 +26,7 @@ public class CollectDetector : MonoBehaviour {
 			//totalNumCollected++;
 			int i = 0;
 			int index = 0;
+
 			foreach (Transform child in transform.parent.transform) {
 				if (child == transform) {
 					index = i;
