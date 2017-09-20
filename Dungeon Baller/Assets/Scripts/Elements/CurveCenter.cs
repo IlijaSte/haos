@@ -19,17 +19,11 @@ public class CurveCenter : MonoBehaviour {
 		brb = ball.GetComponent<Rigidbody> ();
 	}
 
-	void OnTriggerEnter(Collider col){
+	void OnTriggerExit(Collider col){
 
 		if (col.gameObject.name == "Ball") {
 			print (brb.angularVelocity);
 
-			float addX = 0;
-			float addZ = 0;
-			if (t.right.x != 0)
-				addX = 0.1f;
-			if (t.right.z != 0)
-				addZ = 0.1f;
 
 			//brb.velocity = Vector3.zero;
 			//brb.angularVelocity = Vector3.zero;
@@ -37,7 +31,7 @@ public class CurveCenter : MonoBehaviour {
 			brb.angularVelocity = Vector3.Scale (brb.angularVelocity, new Vector3 (Mathf.Abs (t.forward.x), 0, Mathf.Abs (t.forward.z)));
 
 			brb.velocity = Vector3.Scale (brb.velocity, new Vector3 (Mathf.Abs (t.right.x), 0, Mathf.Abs (t.right.z)));
-			bt.forward = new Vector3 (t.right.x, 0, t.right.z); 
+			//bt.forward = new Vector3 (t.right.x, 0, t.right.z); 
 
 			print (brb.angularVelocity);
 

@@ -35,7 +35,7 @@ public class PressurePlate : MonoBehaviour {
 	void Start () {
 
 		initPos = transform.position;
-		endPos = transform.position - (new Vector3 (0, 0.086f, 0));
+		endPos = transform.position - (new Vector3 (0, 0.055f, 0));
 		linkedInitPos = linkedTo.transform.position;
 		linkedEndPos = linkedTo.transform.position - (new Vector3 (0, 0.55f, 0));
 		rb = GetComponent<Rigidbody> ();
