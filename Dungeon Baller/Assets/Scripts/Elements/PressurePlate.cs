@@ -19,6 +19,10 @@ public class PressurePlate : MonoBehaviour {
 	private Vector3 linkedEndPos;
 	public float speed = 2f;
 	private Rigidbody rb;
+	public float moveBy;
+
+	public bool isGoingUp;
+
 	void OnTriggerEnter(Collider col){
 
 		if (col.gameObject.name == "Ball") {
@@ -37,7 +41,12 @@ public class PressurePlate : MonoBehaviour {
 		initPos = transform.position;
 		endPos = transform.position - (new Vector3 (0, 0.055f, 0));
 		linkedInitPos = linkedTo.transform.position;
-		linkedEndPos = linkedTo.transform.position - (new Vector3 (0, 0.55f, 0));
+
+		if(isGoingUp)
+			linkedEndPos = linkedTo.transform.position +(new Vector3 (0, moveBy, 0));
+		else 
+			linkedEndPos = linkedTo.transform.position -(new Vector3 (0, moveBy, 0));
+
 		rb = GetComponent<Rigidbody> ();
 		linkedrb = linkedTo.GetComponent<Rigidbody> ();
 	}
@@ -57,6 +66,7 @@ public class PressurePlate : MonoBehaviour {
 
 				i += Time.deltaTime * speed;
 				rb.MovePosition (Vector3.Lerp (initPos, endPos, i));
+
 				linkedrb.MovePosition (Vector3.Lerp (linkedInitPos, linkedEndPos, i));
 
 			} else {
