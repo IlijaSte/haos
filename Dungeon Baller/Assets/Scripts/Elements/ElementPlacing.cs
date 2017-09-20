@@ -239,7 +239,7 @@ public class ElementPlacing : MonoBehaviour {
 									newObj = Instantiate (curve);
 									curveNum++;
 									newObj.name = "curve" + curveNum;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.375f - 0.08f, Mathf.Round (hit.point.z));
+									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.375f - 0.12f, Mathf.Round (hit.point.z));
 									placed = true;
 
 								

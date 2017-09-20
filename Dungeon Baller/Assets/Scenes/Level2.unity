@@ -2917,7 +2917,7 @@ MonoBehaviour:
   respawnX: 2
   respawnY: 9.93
   respawnZ: 1
-  nextLevel: Level2
+  nextLevel: Level3
   ps: {fileID: 1346557164}
   panel: {fileID: 1528873399}
 --- !u!1 &873428115
