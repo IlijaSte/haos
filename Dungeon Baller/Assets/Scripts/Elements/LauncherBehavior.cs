@@ -70,7 +70,7 @@ public class LauncherBehavior : MonoBehaviour {
 		}
 		if (Mathf.Abs(ball.transform.position.x - transform.position.x) < 0.2f && Mathf.Abs(ball.transform.position.y - transform.position.y) < 0.45f &&Mathf.Abs(ball.transform.position.z - transform.position.z) < 0.2f && !movingOut && !movingIn) {
 			Vector3 scaled = Vector3.Scale (ballRb.velocity, transform.forward);
-			if ((scaled != Vector3.zero) && (scaled.x > 0 || scaled.z > 0)) {
+			if ((scaled != Vector3.zero) && (((Mathf.Abs(scaled.x) > Mathf.Abs(scaled.z)) && scaled.x > 0) || ((Mathf.Abs(scaled.z) > Mathf.Abs(scaled.x)) && scaled.z > 0))) {
 				ball.transform.position = new Vector3 (transform.position.x, ball.transform.position.y, transform.position.z);
 
 				movingOut = true;
