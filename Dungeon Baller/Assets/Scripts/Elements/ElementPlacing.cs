@@ -243,6 +243,7 @@ public class ElementPlacing : MonoBehaviour {
 									foreach (Transform child in GameObject.Find("RampGridBlocks").transform) {
 										if (child.gameObject.GetComponent<BlockHover> ().mouseIn) {
 											newObj.transform.rotation = child.rotation;
+											newObj.transform.position = child.position;
 											break;
 										}
 									}
