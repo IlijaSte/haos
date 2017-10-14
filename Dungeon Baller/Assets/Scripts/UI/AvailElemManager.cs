@@ -120,6 +120,7 @@ public class AvailElemManager : MonoBehaviour {
 
 					ElementPlacing.holding = false;
 					BlockHover.hideGrid ();
+					BlockHover.hideRampGrid ();
 				}
 
 			}

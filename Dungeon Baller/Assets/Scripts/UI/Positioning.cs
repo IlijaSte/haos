@@ -22,6 +22,7 @@ public class Positioning : MonoBehaviour {
 
 			hideButtons ();
 			BlockHover.hideGrid ();
+			BlockHover.hideRampGrid ();
 		}
 
 	}
@@ -79,7 +80,13 @@ public class Positioning : MonoBehaviour {
 		if (placedElem.GetComponent<ElementProperties> ().removable) {
 			ElementPlacing.currHold = ep.truncateNumbers (placedElem.name);
 			ElementPlacing.holding = true;
-			BlockHover.showGrid ();
+			if(placedElem.name.Contains("ramp")){
+				BlockHover.showRampGrid();
+				BlockHover.hideGrid();
+			}else{
+				BlockHover.showGrid ();
+				BlockHover.hideRampGrid();
+			}
 			ep.decNum (placedElem.name);
 			Destroy (placedElem);
 

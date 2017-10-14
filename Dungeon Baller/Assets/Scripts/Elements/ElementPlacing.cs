@@ -15,7 +15,8 @@ public class ElementPlacing : MonoBehaviour {
 	public GameObject curve;
 	public GameObject pistonBlock;
 	public int setdirNum, blockNum, rampNum, curveNum, pistonBlockNum;
-	private GameObject ground;
+	public GameObject ground = null;
+	public GameObject rampGround = null;
 	private GameObject invPanel;
 	private GameObject spawnedObjects;
 	static public GameObject LeftRotButton;
@@ -42,7 +43,10 @@ public class ElementPlacing : MonoBehaviour {
 		leftImage = LeftRotButton.GetComponent<Image> ();
 		rightImage = RightRotButton.GetComponent<Image> ();
 		checkImage = CheckButton.GetComponent<Image> ();
-		ground = GameObject.Find ("Plane");
+		if(ground == null)
+			ground = GameObject.Find ("Plane");
+		if (rampGround == null)
+			rampGround = GameObject.Find ("RampPlane");
 		holding = false;
 		setdirNum = blockNum = rampNum = curveNum = pistonBlockNum = 0;
 		invPanel = GameObject.Find ("InvPanel");
@@ -51,7 +55,13 @@ public class ElementPlacing : MonoBehaviour {
 	}
 
 	public void TakeElement(string elem){
-		BlockHover.showGrid ();
+		if (elem == "ramp") {
+			BlockHover.showRampGrid ();
+			BlockHover.hideGrid ();
+		} else {
+			BlockHover.showGrid ();
+			BlockHover.hideRampGrid ();
+		}
 		holding = true;
 		currHold = elem;
 		if (elem == "remove") {
@@ -187,7 +197,10 @@ public class ElementPlacing : MonoBehaviour {
 				RaycastHit hit;
 				Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				ground.GetComponent<MeshCollider> ().enabled = true;
+				rampGround.GetComponent<MeshCollider> ().enabled = true;
+			
 				BlockHover.hideGrid ();
+				BlockHover.hideRampGrid ();
 				if (Physics.Raycast (ray, out hit, 100)) {
 					if (holding) {
 						
@@ -201,15 +214,17 @@ public class ElementPlacing : MonoBehaviour {
 
 						} else {
 
-
 							Bounds bounds = ground.GetComponent<MeshCollider> ().bounds;
-							if (bounds.Contains (hit.point) && !overlaping(hit.point)) {
+							Bounds rbounds = ground.GetComponent<MeshCollider> ().bounds;
+							if(rampGround != null)
+								rbounds = rampGround.GetComponent<MeshCollider> ().bounds;
+							if ((bounds.Contains (hit.point) || ((rampGround != null) && rbounds.Contains(hit.point))) && !overlaping(hit.point)) {
 								var script = invPanel.GetComponent<AvailElemManager> ();
 								bool placed = false;
 
 								GameObject newObj = null;
 
-								if (currHold == "setdir") {
+								if (currHold == "setdir" && bounds.Contains(hit.point)) {
 								
 									newObj = Instantiate (setDir);
 									setdirNum++;
@@ -218,23 +233,23 @@ public class ElementPlacing : MonoBehaviour {
 									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y - 0.49f, Mathf.Round (hit.point.z));
 									placed = true;
 								}
-								else if (currHold == "block") {
-
-									newObj = Instantiate (block);
-									blockNum++;
-									newObj.name = "block" + blockNum;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.45f, Mathf.Round (hit.point.z));
-									placed = true;
-
-								} else if (currHold == "ramp") {
+								else if ((currHold == "ramp") && rbounds.Contains(hit.point)) {
 
 									newObj = Instantiate (ramp);
 									rampNum++;
 									newObj.name = "ramp" + rampNum;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.4f, Mathf.Round (hit.point.z));
+									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.18f, Mathf.Round (hit.point.z));
+
+									foreach (Transform child in GameObject.Find("RampGridBlocks").transform) {
+										if (child.gameObject.GetComponent<BlockHover> ().mouseIn) {
+											newObj.transform.rotation = child.rotation;
+											break;
+										}
+									}
+
 									placed = true;
 
-								} else if (currHold == "curve") {
+								} else if (currHold == "curve" && bounds.Contains(hit.point)) {
 
 									newObj = Instantiate (curve);
 									curveNum++;
@@ -243,7 +258,7 @@ public class ElementPlacing : MonoBehaviour {
 									placed = true;
 
 								
-								} else if (currHold == "pistonblock") {
+								} else if (currHold == "pistonblock" && bounds.Contains(hit.point)) {
 
 									newObj = Instantiate (pistonBlock);
 									pistonBlockNum++;
@@ -268,7 +283,13 @@ public class ElementPlacing : MonoBehaviour {
 						if (hit.collider.gameObject && (hit.collider.gameObject.tag == "Spawned Objects")) {
 
 							activateButtons ();
-							BlockHover.showGrid ();
+							if (hit.collider.gameObject.name.Contains ("ramp")) {
+								BlockHover.showRampGrid ();
+								BlockHover.hideGrid ();
+							} else {
+								BlockHover.showGrid ();
+								BlockHover.hideRampGrid ();
+							}
 							//if (hit.collider.gameObject.name.Contains ("halfcurve")) {
 								
 							//	Positioning.placedElem = hit.collider.gameObject.transform.parent.gameObject;
@@ -282,8 +303,15 @@ public class ElementPlacing : MonoBehaviour {
 
 				}
 				ground.GetComponent<MeshCollider> ().enabled = false;
-				if(holding)
-					BlockHover.showGrid ();
+				if (holding) {
+					if (currHold == "ramp") {
+						BlockHover.showRampGrid ();
+						BlockHover.hideGrid ();
+					} else {
+						BlockHover.showGrid ();
+						BlockHover.hideRampGrid ();
+					}
+				}
 			}
 
 		}

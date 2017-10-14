@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 72233662ef59a9a438f2db167dc695e8
 timeCreated: 1508004628
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
+=======
+guid: ff5bfbe3aee91b64b85f848786a76e06
+timeCreated: 1508010274
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+>>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
   fileIDToRecycleName:
     100000: grid
     100002: grid7x7
@@ -31,6 +39,7 @@ ModelImporter:
     3300006: lvl7.001
     3300008: lvl8
     3300010: WALLS
+<<<<<<< HEAD
     4300000: lvl7.001
     4300002: grid
     4300004: lvl7
@@ -43,11 +52,22 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
+=======
+    4300000: WALLS
+    4300002: lvl7.001
+    4300004: grid
+    4300006: lvl7
+    4300008: grid7x7
+    4300010: lvl8
+>>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+<<<<<<< HEAD
     materialLocation: 0
+=======
+>>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -60,7 +80,10 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+<<<<<<< HEAD
     importAnimatedCustomProperties: 0
+=======
+>>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
