@@ -1,14 +1,42 @@
 fileFormatVersion: 2
-guid: a3891aecd6ee0ff48b38e71488d85523
+guid: 89f57e1d295125c4993d756955e229e6
+timeCreated: 1508010273
+licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: halfcrv
-    9500000: //RootNode
+    100000: grid
+    100002: grid7x7
+    100004: //RootNode
+    100006: lvl7
+    100008: lvl7.001
+    100010: lvl8
+    100012: WALLS
+    400000: grid
+    400002: grid7x7
+    400004: //RootNode
+    400006: lvl7
+    400008: lvl7.001
+    400010: lvl8
+    400012: WALLS
+    2300000: grid
+    2300002: grid7x7
+    2300004: lvl7
+    2300006: lvl7.001
+    2300008: lvl8
+    2300010: WALLS
+    3300000: grid
+    3300002: grid7x7
+    3300004: lvl7
+    3300006: lvl7.001
+    3300008: lvl8
+    3300010: WALLS
+    4300000: WALLS
+    4300002: lvl7.001
+    4300004: grid
+    4300006: lvl7
+    4300008: grid7x7
+    4300010: lvl8
   materials:
     importMaterials: 1
     materialName: 0
@@ -78,7 +106,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
