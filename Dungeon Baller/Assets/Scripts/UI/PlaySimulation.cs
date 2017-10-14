@@ -23,6 +23,7 @@ public class PlaySimulation : MonoBehaviour {
 		Positioning.isPositioning = false;
 
 		BlockHover.hideGrid ();
+		BlockHover.hideRampGrid ();
 
 		foreach (GameObject child in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
 
