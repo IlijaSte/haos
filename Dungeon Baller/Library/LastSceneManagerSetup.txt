@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/Level8.unity
+=======
 - path: Assets/Scenes/RampTest.unity
+>>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
   isLoaded: 1
   isActive: 1
