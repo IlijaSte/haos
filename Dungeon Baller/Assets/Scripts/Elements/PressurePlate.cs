@@ -80,7 +80,7 @@ public class PressurePlate : MonoBehaviour {
 
 			if (i < 1.0f) {
 
-				i += Time.deltaTime * speed;
+				i += Time.deltaTime * 2;
 				rb.MovePosition (Vector3.Lerp (endPos, initPos, i));
 
 			} else {
