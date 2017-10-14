@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class Positioning : MonoBehaviour {
 
 	static public bool isPositioning;
-	static public float posAngle;
 	static public GameObject placedElem;
 	public ElementPlacing ep;
-	static private int currX = 0;
+	private int currX = 0;
 
 	void Awake(){
 
 		isPositioning = false;
-		posAngle = 0;
+		currX = 0;
 	}
 
 	public void checkPress(){
@@ -38,7 +37,7 @@ public class Positioning : MonoBehaviour {
 			ElementPlacing.RightRotButton.GetComponent<RectTransform> ().localPosition += new Vector3 (0, 95, 0);
 			ElementPlacing.RemoveButton.GetComponent<RectTransform> ().localPosition += new Vector3 (0, 95, 0);
 			isPositioning = true;
-			currX = 0;
+			//currX = 0;
 		}
 	}
 
@@ -60,9 +59,6 @@ public class Positioning : MonoBehaviour {
 	public void RotateRight(){
 		if (placedElem.GetComponent<ElementProperties> ().rotatable) {
 
-
-
-			posAngle -= 90;
 			placedElem.transform.rotation = Quaternion.Euler (new Vector3 (placedElem.transform.rotation.eulerAngles.x, placedElem.transform.rotation.eulerAngles.y + 90, placedElem.transform.rotation.eulerAngles.z));
 	
 		}
@@ -71,8 +67,6 @@ public class Positioning : MonoBehaviour {
 	public void RotateLeft(){
 		if (placedElem.GetComponent<ElementProperties> ().rotatable) {
 			
-
-			posAngle += 90;
 			placedElem.transform.rotation = Quaternion.Euler (new Vector3 (placedElem.transform.rotation.eulerAngles.x, placedElem.transform.rotation.eulerAngles.y - 90, placedElem.transform.rotation.eulerAngles.z));
 
 		}
