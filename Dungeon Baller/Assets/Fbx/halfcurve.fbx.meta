@@ -1,8 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: a3891aecd6ee0ff48b38e71488d85523
-timeCreated: 1507991039
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -11,44 +8,18 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: halfcrv
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
-=======
-guid: 8210af35b77166440803a4dc59b4f4a0
-timeCreated: 1506016720
-licenseType: Free
-ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Camera
-    100002: //RootNode
-    100004: Lamp
-    100006: Plane
-    400000: Camera
-    400002: //RootNode
-    400004: Lamp
-    400006: Plane
-    2000000: Camera
-    2300000: Plane
-    2300002: //RootNode
-    3300000: Plane
-    3300002: //RootNode
-    4300000: Plane
-    4300002: halfcrv
-    10800000: Lamp
->>>>>>> 762735284f53611f96d08bc7ad3ae7a297e9ac8a
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-<<<<<<< HEAD
     materialLocation: 0
-=======
->>>>>>> 762735284f53611f96d08bc7ad3ae7a297e9ac8a
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -61,10 +32,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-<<<<<<< HEAD
     importAnimatedCustomProperties: 0
-=======
->>>>>>> 762735284f53611f96d08bc7ad3ae7a297e9ac8a
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -118,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
