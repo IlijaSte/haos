@@ -197,7 +197,7 @@ public class ElementPlacing : MonoBehaviour {
 				RaycastHit hit;
 				Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				ground.GetComponent<MeshCollider> ().enabled = true;
-				rampGround.GetComponent<MeshCollider> ().enabled = true;
+				if(rampGround) rampGround.GetComponent<MeshCollider> ().enabled = true;
 			
 				BlockHover.hideGrid ();
 				BlockHover.hideRampGrid ();

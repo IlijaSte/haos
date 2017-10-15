@@ -1,24 +1,5 @@
 fileFormatVersion: 2
 guid: a3891aecd6ee0ff48b38e71488d85523
-<<<<<<< HEAD
-=======
-ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: halfcrv
-    9500000: //RootNode
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
-guid: a3891aecd6ee0ff48b38e71488d85523
-timeCreated: 1507991039
-licenseType: Free
->>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -34,43 +15,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
-<<<<<<< HEAD
-=======
-=======
-guid: 8210af35b77166440803a4dc59b4f4a0
-timeCreated: 1506016720
-licenseType: Free
-ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Camera
-    100002: //RootNode
-    100004: Lamp
-    100006: Plane
-    400000: Camera
-    400002: //RootNode
-    400004: Lamp
-    400006: Plane
-    2000000: Camera
-    2300000: Plane
-    2300002: //RootNode
-    3300000: Plane
-    3300002: //RootNode
-    4300000: Plane
-    4300002: halfcrv
-    10800000: Lamp
->>>>>>> 762735284f53611f96d08bc7ad3ae7a297e9ac8a
->>>>>>> bd89ab2d4248c29a1a2ec0369d570d8e6c0dc39f
->>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
->>>>>>> 62e2331271685624c12c6e9d4b4e49755a6a1708
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-<<<<<<< HEAD
-=======
     materialLocation: 0
->>>>>>> 62e2331271685624c12c6e9d4b4e49755a6a1708
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -83,10 +32,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-<<<<<<< HEAD
-=======
     importAnimatedCustomProperties: 0
->>>>>>> 62e2331271685624c12c6e9d4b4e49755a6a1708
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
