@@ -1,17 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: b43b9c803d23ba742bfca955e5044501
-timeCreated: 1508004628
-licenseType: Free
-ModelImporter:
-  serializedVersion: 22
-=======
-guid: 00ae9ccacfcd0334383d9310b4a69cf5
-timeCreated: 1508010272
-licenseType: Free
 ModelImporter:
   serializedVersion: 21
->>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
   fileIDToRecycleName:
     100000: grid
     100002: //RootNode
@@ -40,23 +30,11 @@ ModelImporter:
     4300004: lvl7
     4300006: grid7x7
     4300008: lvl8
-<<<<<<< HEAD
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
-=======
->>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-<<<<<<< HEAD
-    materialLocation: 0
-=======
->>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -69,10 +47,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-<<<<<<< HEAD
-    importAnimatedCustomProperties: 0
-=======
->>>>>>> 7e018e44656ff1602178cd595fddd4d2ba1805ec
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -126,7 +100,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
