@@ -196,7 +196,6 @@ public class ElementPlacing : MonoBehaviour {
 				ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
 				Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-<<<<<<< HEAD
 				foreach (Transform child in ground.transform) {
 					child.GetComponent<MeshCollider> ().enabled = true;
 				}
@@ -207,10 +206,6 @@ public class ElementPlacing : MonoBehaviour {
 				}
 				//ground.GetComponent<MeshCollider> ().enabled = true;
 				//rampGround.GetComponent<MeshCollider> ().enabled = true;
-=======
-				ground.GetComponent<MeshCollider> ().enabled = true;
-				if(rampGround) rampGround.GetComponent<MeshCollider> ().enabled = true;
->>>>>>> fab8c1f098a84e6402ef3c2f806b0ca0e5859e88
 			
 				BlockHover.hideGrid ();
 				BlockHover.hideRampGrid ();
