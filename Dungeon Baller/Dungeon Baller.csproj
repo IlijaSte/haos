@@ -241,6 +241,7 @@
     <Compile Include="Assets\Scripts\Elements\MyGameObject.cs" />
     <Compile Include="Assets\Scripts\Elements\PistonBlockActivation.cs" />
     <Compile Include="Assets\Scripts\Elements\PressurePlate.cs" />
+    <Compile Include="Assets\Scripts\Elements\RampSpeedUp.cs" />
     <Compile Include="Assets\Scripts\Elements\SpeedBlock.cs" />
     <Compile Include="Assets\Scripts\Elements\SpikeActivation.cs" />
     <Compile Include="Assets\Scripts\Elements\WallTrigger.cs" />

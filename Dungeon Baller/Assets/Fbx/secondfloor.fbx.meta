@@ -1,35 +1,41 @@
 fileFormatVersion: 2
-guid: a3891aecd6ee0ff48b38e71488d85523
+guid: 41c8621d479f51a42a2406f4a48814af
+timeCreated: 1508015994
+licenseType: Free
 ModelImporter:
-<<<<<<< HEAD
-  serializedVersion: 21
-=======
   serializedVersion: 22
->>>>>>> fab8c1f098a84e6402ef3c2f806b0ca0e5859e88
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: halfcrv
-    9500000: //RootNode
-<<<<<<< HEAD
-=======
+    4300000: SecondFloor
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
->>>>>>> fab8c1f098a84e6402ef3c2f806b0ca0e5859e88
+      name: Material
+    second: {fileID: 2100000, guid: 8e84a2fe27787334ca6acccdce7386e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: bfae5e03c0d447e48b2b774b5d348d61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 18c1e8a8d0d7a26469d253565770b915, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-<<<<<<< HEAD
-=======
     materialLocation: 0
->>>>>>> fab8c1f098a84e6402ef3c2f806b0ca0e5859e88
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -42,10 +48,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-<<<<<<< HEAD
-=======
     importAnimatedCustomProperties: 0
->>>>>>> fab8c1f098a84e6402ef3c2f806b0ca0e5859e88
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -99,7 +102,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
