@@ -22,7 +22,7 @@ public class CurveCenter : MonoBehaviour {
 	void OnTriggerExit(Collider col){
 
 		if (col.gameObject.name == "Ball") {
-			print (brb.angularVelocity);
+			//print (brb.angularVelocity);
 
 
 			//brb.velocity = Vector3.zero;
@@ -33,7 +33,7 @@ public class CurveCenter : MonoBehaviour {
 			brb.velocity = Vector3.Scale (brb.velocity, new Vector3 (Mathf.Abs (t.right.x), 0, Mathf.Abs (t.right.z)));
 			//bt.forward = new Vector3 (t.right.x, 0, t.right.z); 
 
-			print (brb.angularVelocity);
+			//print (brb.angularVelocity);
 
 			if (Mathf.Abs (brb.velocity.x) > Mathf.Abs (brb.velocity.z)) {
 				//brb.velocity.z = Mathf.Round(

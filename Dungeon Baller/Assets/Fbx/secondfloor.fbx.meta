@@ -1,45 +1,41 @@
 fileFormatVersion: 2
-guid: c3cdc85776e952e4f8ed9161a9dbb001
+guid: 41c8621d479f51a42a2406f4a48814af
+timeCreated: 1508015994
+licenseType: Free
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
-    100000: grid
-    100002: grid7x7
-    100004: //RootNode
-    100006: lvl7
-    100008: lvl7.001
-    100010: lvl8
-    100012: WALLS
-    400000: grid
-    400002: grid7x7
-    400004: //RootNode
-    400006: lvl7
-    400008: lvl7.001
-    400010: lvl8
-    400012: WALLS
-    2300000: grid
-    2300002: grid7x7
-    2300004: lvl7
-    2300006: lvl7.001
-    2300008: lvl8
-    2300010: WALLS
-    3300000: grid
-    3300002: grid7x7
-    3300004: lvl7
-    3300006: lvl7.001
-    3300008: lvl8
-    3300010: WALLS
-    4300000: WALLS
-    4300002: lvl7.001
-    4300004: grid
-    4300006: lvl7
-    4300008: grid7x7
-    4300010: lvl8
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: SecondFloor
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 8e84a2fe27787334ca6acccdce7386e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: bfae5e03c0d447e48b2b774b5d348d61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 18c1e8a8d0d7a26469d253565770b915, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -52,6 +48,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -105,7 +102,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

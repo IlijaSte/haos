@@ -44,9 +44,9 @@ public class ElementPlacing : MonoBehaviour {
 		rightImage = RightRotButton.GetComponent<Image> ();
 		checkImage = CheckButton.GetComponent<Image> ();
 		if(ground == null)
-			ground = GameObject.Find ("Plane");
+			ground = GameObject.Find ("PlacingPlanes");
 		if (rampGround == null)
-			rampGround = GameObject.Find ("RampPlane");
+			rampGround = GameObject.Find ("RampPlacingPlanes");
 		holding = false;
 		setdirNum = blockNum = rampNum = curveNum = pistonBlockNum = 0;
 		invPanel = GameObject.Find ("InvPanel");
@@ -196,8 +196,16 @@ public class ElementPlacing : MonoBehaviour {
 				ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
 				Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-				ground.GetComponent<MeshCollider> ().enabled = true;
-				rampGround.GetComponent<MeshCollider> ().enabled = true;
+				foreach (Transform child in ground.transform) {
+					child.GetComponent<MeshCollider> ().enabled = true;
+				}
+				if (rampGround != null) {
+					foreach (Transform child in rampGround.transform) {
+						child.GetComponent<MeshCollider> ().enabled = true;
+					}
+				}
+				//ground.GetComponent<MeshCollider> ().enabled = true;
+				//rampGround.GetComponent<MeshCollider> ().enabled = true;
 			
 				BlockHover.hideGrid ();
 				BlockHover.hideRampGrid ();
@@ -213,18 +221,36 @@ public class ElementPlacing : MonoBehaviour {
 							Positioning.placedElem = hit.collider.gameObject;
 
 						} else {
+							bool hitGround = false;
+							bool hitRampGround = false;
+							foreach (Transform child in ground.transform) {
+								Bounds bounds = child.GetComponent<MeshCollider> ().bounds;
+								if (bounds.Contains (hit.point)) {
+									hitGround = true;
+									break;
+								}
+							}
 
-							Bounds bounds = ground.GetComponent<MeshCollider> ().bounds;
-							Bounds rbounds = ground.GetComponent<MeshCollider> ().bounds;
-							if(rampGround != null)
-								rbounds = rampGround.GetComponent<MeshCollider> ().bounds;
-							if ((bounds.Contains (hit.point) || ((rampGround != null) && rbounds.Contains(hit.point))) && !overlaping(hit.point)) {
+							if (!hitGround && rampGround != null) {
+
+								foreach (Transform child in rampGround.transform) {
+									Bounds bounds = child.GetComponent<MeshCollider> ().bounds;
+									if (bounds.Contains (hit.point)) {
+										hitRampGround = true;
+										break;
+									}
+								}
+
+							}
+								
+							//if ((bounds.Contains (hit.point) || ((rampGround != null) && rbounds.Contains(hit.point))) && !overlaping(hit.point)) {
+							if((hitGround || hitRampGround) && !overlaping(hit.point)){	
 								var script = invPanel.GetComponent<AvailElemManager> ();
 								bool placed = false;
 
 								GameObject newObj = null;
 
-								if (currHold == "setdir" && bounds.Contains(hit.point)) {
+								if (currHold == "setdir" && hitGround) {
 								
 									newObj = Instantiate (setDir);
 									setdirNum++;
@@ -233,7 +259,7 @@ public class ElementPlacing : MonoBehaviour {
 									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y - 0.49f, Mathf.Round (hit.point.z));
 									placed = true;
 								}
-								else if ((currHold == "ramp") && rbounds.Contains(hit.point)) {
+								else if ((currHold == "ramp") && hitRampGround) {
 
 									newObj = Instantiate (ramp);
 									rampNum++;
@@ -250,7 +276,7 @@ public class ElementPlacing : MonoBehaviour {
 
 									placed = true;
 
-								} else if (currHold == "curve" && bounds.Contains(hit.point)) {
+								} else if (currHold == "curve" && hitGround) {
 
 									newObj = Instantiate (curve);
 									curveNum++;
@@ -259,7 +285,7 @@ public class ElementPlacing : MonoBehaviour {
 									placed = true;
 
 								
-								} else if (currHold == "pistonblock" && bounds.Contains(hit.point)) {
+								} else if (currHold == "pistonblock" && hitGround) {
 
 									newObj = Instantiate (pistonBlock);
 									pistonBlockNum++;
@@ -303,7 +329,14 @@ public class ElementPlacing : MonoBehaviour {
 					}
 
 				}
-				ground.GetComponent<MeshCollider> ().enabled = false;
+				foreach (Transform child in ground.transform) {
+					child.GetComponent<MeshCollider> ().enabled = false;
+				}
+				if (rampGround != null) {
+					foreach (Transform child in rampGround.transform) {
+						child.GetComponent<MeshCollider> ().enabled = false;
+					}
+				}
 				if (holding) {
 					if (currHold == "ramp") {
 						BlockHover.showRampGrid ();
