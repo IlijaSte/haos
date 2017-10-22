@@ -80,10 +80,10 @@ public class RampSpeedUp : MonoBehaviour {
 		
 		if (goingOverThis && goingUp) {
 			float intensity = brb.mass * 9.81f * 0.447f + 0.5f;
-			if(Mathf.Abs(brb.velocity.x) > Mathf.Abs(brb.velocity.z)){
-				brb.AddForce (Mathf.Sign(brb.velocity.x) * intensity, intensity / 2.8f, 0, ForceMode.Force);
-			}else{
-				brb.AddForce (0, intensity / 2.8f, Mathf.Sign(brb.velocity.z) * intensity, ForceMode.Force);
+			if((Mathf.Abs(brb.velocity.x) > Mathf.Abs(brb.velocity.z)) && Mathf.Abs(brb.velocity.x) <= 5){
+				brb.AddForce (Mathf.Sign(brb.velocity.x) * intensity, (intensity - 0.5f) / 3f, 0, ForceMode.Force);
+			}else if((Mathf.Abs(brb.velocity.z) > Mathf.Abs(brb.velocity.x)) && Mathf.Abs(brb.velocity.z) <= 5) {
+				brb.AddForce (0, (intensity - 0.5f) / 3f, Mathf.Sign(brb.velocity.z) * intensity, ForceMode.Force);
 			}
 
 		}
