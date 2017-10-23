@@ -27,11 +27,90 @@ public class LevelSwipeSel : MonoBehaviour {
 		camtr = camera.GetComponent<Transform> ();
 		rotSpeed = 100f;
 	}
-	
+
+	private bool isHoldingMouse = false;
+	private Vector2 initClickPos;
+
 	// Update is called once per frame
 	void FixedUpdate () {
 
 		if (!moving) {
+
+			if (Input.GetMouseButtonDown (0)) {
+
+				isHoldingMouse = true;
+				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+
+			} else if (Input.GetMouseButtonUp (0)) {
+				
+				isHoldingMouse = false;
+
+			} else if (Input.GetMouseButton (0)) {
+
+				float deltaX = initClickPos.x - Input.mousePosition.x;
+
+				if (deltaX > 0) {
+
+					if (dir == 1) {
+						i = 0f;
+						dir = -1;
+					}
+					else
+						i += rotSpeed * Time.deltaTime;
+					if (i > 0.25f) {
+
+						moving = true;
+						i = 0f;
+						dir = -1;
+
+						nextPos = curPos - 1;
+						if (nextPos < 0) {
+							nextPos = camPositions.transform.childCount - 1;
+						}
+
+						oldPos = camPositions.transform.GetChild (curPos).gameObject;
+						newPos = camPositions.transform.GetChild (nextPos).gameObject;
+						selectButton.enabled = false;
+						rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
+
+						//initTouch = new Touch ();
+					}
+
+				} else if (deltaX < 0) {
+					if (dir == -1) {
+						i = 0;
+						dir = 1;
+					}
+					else
+						i -= rotSpeed * Time.deltaTime;
+					if (i < -0.25f) {
+
+						moving = true;
+						i = 0f;
+
+						dir = 1;
+
+						nextPos = curPos + 1;
+						if (nextPos == camPositions.transform.childCount)
+							nextPos = 0;
+
+						oldPos = camPositions.transform.GetChild (curPos).gameObject;
+						newPos = camPositions.transform.GetChild (nextPos).gameObject;
+						selectButton.enabled = false;
+						rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
+
+						//initTouch = new Touch ();
+					}
+
+
+				}
+				//initTouch = touch;
+				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+				i = 0;
+
+			}
+				
+
 			foreach (Touch touch in Input.touches) {
 				if (touch.phase == TouchPhase.Began) {
 

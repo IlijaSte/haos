@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114094255436545088}
   - component: {fileID: 114524908287682610}
   m_Layer: 5
-  m_Name: setdir
+  m_Name: SpeedButton 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
