@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9019e1149c09c946a536605c36f354f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 7
   detector: {fileID: 0}
 --- !u!23 &221073715
 MeshRenderer:
@@ -2797,6 +2797,11 @@ Prefab:
         type: 2}
       propertyPath: m_Mass
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114453187519542056, guid: 23a736b6e18b8cb4f95539cf9a782506,
+        type: 2}
+      propertyPath: nextLevel
+      value: Level9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23a736b6e18b8cb4f95539cf9a782506, type: 2}
@@ -4544,7 +4549,7 @@ Prefab:
     - target: {fileID: 114081874634807606, guid: e94e882f383feee4a85470d1d35dba80,
         type: 2}
       propertyPath: speed
-      value: 12
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 23059419571855580, guid: e94e882f383feee4a85470d1d35dba80,
         type: 2}

@@ -8,15 +8,11 @@ public class FloorSelSwipe : MonoBehaviour {
 	private float initPos;
 	public float towerHeight;
 
-	private RectTransform rectTransform;
-	// Use this for initialization
-	void Start () {
+	private float lastY = 1;
 
-	}
-
-	public void limitPosition(Vector2 vector){
-
-
-
+	public void towerScroll(Vector2 vector){
+		print (vector.y);
+		transform.position = new Vector3 (transform.position.x, transform.position.y - (lastY - vector.y) * 600, transform.position.z);
+		lastY = vector.y;
 	}
 }
