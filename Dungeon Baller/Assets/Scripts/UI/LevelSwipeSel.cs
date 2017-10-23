@@ -106,6 +106,7 @@ public class LevelSwipeSel : MonoBehaviour {
 				}
 				//initTouch = touch;
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+				i = 0;
 
 			}
 				
