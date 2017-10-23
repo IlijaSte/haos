@@ -11,8 +11,8 @@ public class FloorSelSwipe : MonoBehaviour {
 	private float lastY = 1;
 
 	public void towerScroll(Vector2 vector){
-		print (vector.y);
-		transform.position = new Vector3 (transform.position.x, transform.position.y - (lastY - vector.y) * 600, transform.position.z);
+
+		transform.position = new Vector3 (transform.position.x, transform.position.y - (lastY - vector.y) * 400, transform.position.z);
 		lastY = vector.y;
 	}
 }
