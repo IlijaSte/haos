@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 0.972
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1438094828}
-  m_IndirectSpecularColor: {r: 0.40002686, g: 0.45115966, b: 0.4953376, a: 0.972}
+  m_IndirectSpecularColor: {r: 0.4084132, g: 0.4496976, b: 0.49674088, a: 0.972}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -272,6 +272,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Level3
+  transpWall: {fileID: 345372105}
+  transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+  origMaterials: []
+--- !u!1 &212113334 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
+  m_PrefabInternal: {fileID: 362923906}
+--- !u!1 &243332243 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
+  m_PrefabInternal: {fileID: 362923906}
+--- !u!1 &345372105 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
+  m_PrefabInternal: {fileID: 362923906}
 --- !u!1001 &362923906
 Prefab:
   m_ObjectHideFlags: 0
@@ -326,7 +341,7 @@ Prefab:
     - target: {fileID: 2300008, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
     - target: {fileID: 400000, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
@@ -334,15 +349,15 @@ Prefab:
     - target: {fileID: 2300004, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
     - target: {fileID: 2300006, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
     - target: {fileID: 2300002, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
   m_IsPrefabParent: 0
@@ -419,6 +434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Level5
+  transpWall: {fileID: 212113334}
+  transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+  origMaterials: []
 --- !u!1 &874407718
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97adb2148ff9df44787a83cbebac114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1645664877 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
+  m_PrefabInternal: {fileID: 362923906}
 --- !u!1 &1670631525
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +998,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Level6
+  transpWall: {fileID: 1645664877}
+  transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+  origMaterials: []
 --- !u!1 &1738818386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1042,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Level4
+  transpWall: {fileID: 243332243}
+  transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
+  origMaterials: []
 --- !u!1 &2015191322
 GameObject:
   m_ObjectHideFlags: 0
