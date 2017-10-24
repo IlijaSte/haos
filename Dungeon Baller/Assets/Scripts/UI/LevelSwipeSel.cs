@@ -26,12 +26,112 @@ public class LevelSwipeSel : MonoBehaviour {
 
 		camtr = camera.GetComponent<Transform> ();
 		rotSpeed = 100f;
+
+		LevelNameHolder lnm = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
+		if(lnm.transpWall)
+			lnm.transpWall.GetComponent<MeshRenderer>().material = lnm.transpMaterial;
 	}
-	
+
+	private bool isHoldingMouse = false;
+	private Vector2 initClickPos;
+
+	float sub2angles(float a, float b){
+
+		float d = Mathf.Abs(a - b) % 360; 
+		float r = d > 180 ? 360 - d : d;
+
+		//calculate sign 
+		int sign = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a- b>= -360) ? 1 : -1; 
+		r *= sign;
+		return r;
+	}
+
+	bool changedMat = false;
 	// Update is called once per frame
 	void FixedUpdate () {
 
 		if (!moving) {
+
+			if (Input.GetMouseButtonDown (0)) {
+
+				isHoldingMouse = true;
+				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+
+			} else if (Input.GetMouseButtonUp (0)) {
+				
+				isHoldingMouse = false;
+
+			} else if (Input.GetMouseButton (0)) {
+
+				float deltaX = initClickPos.x - Input.mousePosition.x;
+
+				if (deltaX > 0) {
+
+					if (dir == 1) {
+						i = 0f;
+						dir = -1;
+					}
+					else
+						i += rotSpeed * Time.deltaTime;
+					if (i > 0.25f) {
+
+						moving = true;
+						i = 0f;
+						dir = -1;
+
+						nextPos = curPos - 1;
+						if (nextPos < 0) {
+							nextPos = camPositions.transform.childCount - 1;
+						}
+
+						oldPos = camPositions.transform.GetChild (curPos).gameObject;
+						newPos = camPositions.transform.GetChild (nextPos).gameObject;
+						selectButton.enabled = false;
+						selectButton.GetComponent<Image> ().enabled = false;
+						selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = false;
+						rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
+
+						//initTouch = new Touch ();
+					}
+
+				} else if (deltaX < 0) {
+					if (dir == -1) {
+						i = 0;
+						dir = 1;
+					}
+					else
+						i -= rotSpeed * Time.deltaTime;
+					if (i < -0.25f) {
+
+						moving = true;
+						i = 0f;
+
+						dir = 1;
+
+						nextPos = curPos + 1;
+						if (nextPos == camPositions.transform.childCount)
+							nextPos = 0;
+
+						oldPos = camPositions.transform.GetChild (curPos).gameObject;
+						newPos = camPositions.transform.GetChild (nextPos).gameObject;
+		
+						selectButton.enabled = false;
+						selectButton.GetComponent<Image> ().enabled = false;
+						selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = false;
+						rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
+
+						//initTouch = new Touch ();
+					}
+
+
+				}
+				//initTouch = touch;
+				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+				i = 0;
+
+			}
+				
+
 			foreach (Touch touch in Input.touches) {
 				if (touch.phase == TouchPhase.Began) {
 
@@ -62,7 +162,10 @@ public class LevelSwipeSel : MonoBehaviour {
 
 							oldPos = camPositions.transform.GetChild (curPos).gameObject;
 							newPos = camPositions.transform.GetChild (nextPos).gameObject;
+		
 							selectButton.enabled = false;
+							selectButton.GetComponent<Image> ().enabled = false;
+							selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = false;
 							rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
 
 							initTouch = new Touch ();
@@ -88,7 +191,10 @@ public class LevelSwipeSel : MonoBehaviour {
 
 							oldPos = camPositions.transform.GetChild (curPos).gameObject;
 							newPos = camPositions.transform.GetChild (nextPos).gameObject;
+
 							selectButton.enabled = false;
+							selectButton.GetComponent<Image> ().enabled = false;
+							selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = false;
 							rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
 
 							initTouch = new Touch ();
@@ -113,23 +219,33 @@ public class LevelSwipeSel : MonoBehaviour {
 			float a = camtr.rotation.eulerAngles.y;
 			float b = newPos.transform.rotation.eulerAngles.y;
 
-			float d = Mathf.Abs(a - b) % 360; 
-			float r = d > 180 ? 360 - d : d;
 
-			//calculate sign 
-			int sign = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a- b>= -360) ? 1 : -1; 
-			r *= sign;
+
+			float r = sub2angles (a, b);
+
+			float p = sub2angles (oldPos.transform.rotation.eulerAngles.y, newPos.transform.rotation.eulerAngles.y);
 
 			float offset = movedByOffset ? -0.5f : 0;
 
-			if (Mathf.Abs(r) > 0.25f) {
-			//if(i < 1f){
+			if (Mathf.Abs (r) > 0.25f) {
+				//if(i < 1f){
 				camtr.RotateAround (new Vector3 (offset, camtr.position.y, offset), Vector3.up, dir * tmp);
 				//camtr.rotation = Quaternion.Euler (Vector3.Lerp (camtr.rotation.eulerAngles, newPos.transform.rotation.eulerAngles, dir * tmp));
+				LevelNameHolder lnmOld = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
+				LevelNameHolder lnmNew = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
+				if ((lnmOld.transpWall != null) && (Mathf.Abs (r) < Mathf.Abs (p / 2)) && !changedMat) {
+					
+					lnmOld.transpWall.GetComponent<MeshRenderer> ().materials = lnmOld.origMaterials;
+					lnmNew.transpWall.GetComponent<MeshRenderer> ().material = lnmNew.transpMaterial;
+					changedMat = true;
+				}
 
-			} else {
+			}else{
 				moving = false;
+				changedMat = false;
 				selectButton.enabled = true;
+				selectButton.GetComponent<Image> ().enabled = true;
+				selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
 				curPos = nextPos;
 			}
 

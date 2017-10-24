@@ -1,4 +1,8 @@
 sceneSetups:
-- path: Assets/Scenes/Level7.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/Level8.unity
+=======
+- path: Assets/Scenes/MainMenu.unity
+>>>>>>> 93a9dc889c2071f3ab5f44d0672c9388257e8b6a
   isLoaded: 1
   isActive: 1

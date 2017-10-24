@@ -32,10 +32,12 @@ public class ElementPlacing : MonoBehaviour {
 	public GameObject panel;
 	public GameObject canvas;
 
+	//private ArrayList placedObjects;
+
 	// Use this for initialization
 	void Awake () {
 
-
+		//placedObjects = new ArrayList ();
 		LeftRotButton = GameObject.Find ("RotLeftButton");
 		RightRotButton = GameObject.Find ("RotRightButton");
 		CheckButton = GameObject.Find ("CheckButton");
@@ -74,7 +76,7 @@ public class ElementPlacing : MonoBehaviour {
 
 		}
 
-		print (currHold);
+		//print (currHold);
 
 		var manager = GameObject.Find ("UIManager");
 		if (manager.GetComponent<InvOpen> ().open) {
@@ -166,21 +168,29 @@ public class ElementPlacing : MonoBehaviour {
 
 	}
 
-	bool overlaping(Vector3 point){
+	public bool overlaping(Vector3 point){
 
-		GameObject detector = GameObject.CreatePrimitive (PrimitiveType.Cube);
-		detector.transform.position = new Vector3 (Mathf.Round (point.x), point.y + 0.2f, Mathf.Round (point.z));
-		detector.AddComponent<BoxCollider> ();
-		//detector.AddComponent<Rigidbody> ();
+		point = new Vector3 (Mathf.Round (point.x), point.y, Mathf.Round (point.z));
+
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
 			
-			if (detector.GetComponent<BoxCollider> ().bounds.Contains (obj.transform.position)) {
-				Destroy (detector);
+			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
+
 				return true;
 
 			}
 		}
-		Destroy (detector);
+
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Pre-placed Objects")) {
+
+			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
+
+				return true;
+
+			}
+
+		}
+
 		return false;
 
 	}
@@ -298,6 +308,7 @@ public class ElementPlacing : MonoBehaviour {
 
 									newObj.transform.parent = spawnedObjects.transform;
 									activateButtons ();
+									//placedObjects.Add (newObj.transform.position);
 
 									Positioning.placedElem = newObj;
 										
