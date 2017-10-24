@@ -23,12 +23,15 @@ public class PressurePlate : MonoBehaviour {
 
 	public bool isGoingUp;
 
+	private bool triggered = false;
+
 	void OnTriggerEnter(Collider col){
 
-		if (col.gameObject.name == "Ball") {
+		if (col.gameObject.name == "Ball" && !triggered) {
 			if (!movingIn) {
 				movingIn = true;
 				linkedMovingIn = true;
+				triggered = true;
 			}
 
 		}
@@ -57,6 +60,7 @@ public class PressurePlate : MonoBehaviour {
 		if (!PlaySimulation.isSimActive) {
 
 			linkedTo.transform.position = linkedInitPos;
+			triggered = false;
 
 		}
 
