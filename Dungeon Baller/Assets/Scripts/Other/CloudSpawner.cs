@@ -53,7 +53,7 @@ public class CloudSpawner : MonoBehaviour {
 
 		i += Time.deltaTime * spawnSpeed;
 
-		if (i >= 50) {
+		if (i >= 25) {
 
 			GameObject newCloud = Instantiate (cloudPrefab);
 			//newCloud.transform.position = new Vector3 (100, Random.Range (200, 300), Random.Range (100, 300));
