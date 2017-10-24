@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spawned Objects
   - Speed Blocks
+  - Pre-placed Objects
   layers:
   - Default
   - TransparentFX
