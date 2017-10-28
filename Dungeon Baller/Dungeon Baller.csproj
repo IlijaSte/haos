@@ -61,6 +61,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Programs/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Programs/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
@@ -105,11 +111,8 @@
     <Compile Include="Assets\Scripts\Elements\SpikeActivation.cs" />
     <Compile Include="Assets\Scripts\Elements\WallTrigger.cs" />
     <Compile Include="Assets\Scripts\Other\BallRespawn.cs" />
-    <Compile Include="Assets\Scripts\Other\CloudMovement.cs" />
-    <Compile Include="Assets\Scripts\Other\CloudSpawner.cs" />
     <Compile Include="Assets\Scripts\Other\CollectManager.cs" />
     <Compile Include="Assets\Scripts\Other\SaveManager.cs" />
-    <Compile Include="Assets\Scripts\Sound\BackgroundMusic.cs" />
     <Compile Include="Assets\Scripts\UI\AvailElemManager.cs" />
     <Compile Include="Assets\Scripts\UI\BackToLevel.cs" />
     <Compile Include="Assets\Scripts\UI\BlockHover.cs" />
