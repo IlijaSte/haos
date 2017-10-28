@@ -6,10 +6,39 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: lvl7
+    100004: lvl8
+    100006: SecondFloor
+    100008: WALL1
+    100010: WALL2
+    100012: WALL3
     400000: //RootNode
+    400002: lvl7
+    400004: lvl8
+    400006: SecondFloor
+    400008: WALL1
+    400010: WALL2
+    400012: WALL3
     2300000: //RootNode
+    2300002: lvl7
+    2300004: lvl8
+    2300006: SecondFloor
+    2300008: WALL1
+    2300010: WALL2
+    2300012: WALL3
     3300000: //RootNode
+    3300002: lvl7
+    3300004: lvl8
+    3300006: SecondFloor
+    3300008: WALL1
+    3300010: WALL2
+    3300012: WALL3
     4300000: SecondFloor
+    4300002: WALL3
+    4300004: WALL1
+    4300006: WALL2
+    4300008: lvl7
+    4300010: lvl8
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -31,6 +60,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material.004
     second: {fileID: 2100000, guid: 18c1e8a8d0d7a26469d253565770b915, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
