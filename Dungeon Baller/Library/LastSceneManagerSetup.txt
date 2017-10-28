@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Level1.unity
+=======
+- path: Assets/Scenes/Floor1Selection.unity
+>>>>>>> 74eb9403eb40c962ca323b0c19b3ea2c8f698ac4
   isLoaded: 1
   isActive: 1
