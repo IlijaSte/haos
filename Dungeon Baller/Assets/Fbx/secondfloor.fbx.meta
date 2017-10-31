@@ -39,6 +39,35 @@ ModelImporter:
     4300006: WALL2
     4300008: lvl7
     4300010: lvl8
+<<<<<<< HEAD
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 8e84a2fe27787334ca6acccdce7386e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 071b1e47c1cb6c14cb113b48d1e333ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: bfae5e03c0d447e48b2b774b5d348d61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 18c1e8a8d0d7a26469d253565770b915, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: ad54d62a0bbb8b04bad53697a92ed2a5, type: 2}
+=======
+>>>>>>> 546eb3d0e0d770b8e746e97b6183fcfddbedd0bd
   materials:
     importMaterials: 1
     materialName: 0
