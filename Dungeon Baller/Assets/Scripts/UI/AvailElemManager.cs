@@ -18,6 +18,9 @@ public class AvailElemManager : MonoBehaviour {
 	public int setdirNum;
 	public int rampNum;
 	public int pistonBlockNum;
+
+	public ElementPlacing ep;
+
 	public struct AvailElement{
 
 		public GameObject go;
@@ -37,8 +40,10 @@ public class AvailElemManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
-		placing = GameObject.Find ("Placing");
 
+
+		placing = GameObject.Find ("Placing");
+		ep = placing.GetComponent<ElementPlacing> ();
 		availElements = new List<AvailElement>();
 		//availElements.Add(new AvailElement(block, 2, "block"));
 		//availElements.Add(new AvailElement(setdir, 3, "setdir"));
@@ -82,7 +87,7 @@ public class AvailElemManager : MonoBehaviour {
 
 			GameObject elem = GameObject.Find (ae.type + "(Clone)");
 
-			if (GameObject.Find("Placing").GetComponent<ElementPlacing>().getObjectNum(ae.type) < ae.count) {
+			if (ep.getObjectNum(ae.type) < ae.count) {
 				if (elem == null) {
 					
 					switch (ae.type) {
@@ -108,9 +113,12 @@ public class AvailElemManager : MonoBehaviour {
 					GameObject newElem = Instantiate (elem) as GameObject;
 					newElem.transform.SetParent (GameObject.Find ("Buttons").transform, false);
 					newElem.GetComponent<Button> ().onClick.AddListener(delegate{ GameObject.Find("Placing").GetComponent<ElementPlacing>().TakeElement(ae.type); });
-
+					elem = newElem;
 				}
 					
+
+				elem.transform.GetChild (0).GetComponent<Text> ().text = "x" + (ae.count - ep.getObjectNum (ae.type));
+
 			} else {
 
 				if (elem) {
