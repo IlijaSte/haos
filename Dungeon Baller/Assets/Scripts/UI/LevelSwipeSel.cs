@@ -16,7 +16,7 @@ public class LevelSwipeSel : MonoBehaviour {
 	public Camera camera;
 	private Transform camtr;
 	public Button selectButton;
-	private int dir = 0;
+	private int dir = 1;
 	private float rotateAngle = 0f;
 	public bool movedByOffset;
 	private GameObject oldPos;
@@ -50,31 +50,37 @@ public class LevelSwipeSel : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+
+		if (Input.GetMouseButtonDown (0)) {
+
+			isHoldingMouse = true;
+			initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+			i = 0;
+		} else if (Input.GetMouseButtonUp (0)) {
+
+			isHoldingMouse = false;
+			i = 0;
+		}
+
 		if (!moving) {
 
-			if (Input.GetMouseButtonDown (0)) {
 
-				isHoldingMouse = true;
-				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-
-			} else if (Input.GetMouseButtonUp (0)) {
-				
-				isHoldingMouse = false;
-
-			} else if (Input.GetMouseButton (0)) {
+			if (Input.GetMouseButton (0)) {
 
 				float deltaX = initClickPos.x - Input.mousePosition.x;
-
+				print (i);
 				if (deltaX > 0) {
 
 					if (dir == 1) {
 						i = 0f;
 						dir = -1;
+						initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 					else
-						i += rotSpeed * Time.deltaTime;
-					if (i > 0.25f) {
-
+						//i += rotSpeed * Time.deltaTime;
+						i += deltaX;
+					if (i > 100f) {
+						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 						moving = true;
 						i = 0f;
 						dir = -1;
@@ -98,14 +104,17 @@ public class LevelSwipeSel : MonoBehaviour {
 					if (dir == -1) {
 						i = 0;
 						dir = 1;
+
+						initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 					else
-						i -= rotSpeed * Time.deltaTime;
-					if (i < -0.25f) {
+						//i -= rotSpeed * Time.deltaTime;
+						i += deltaX;
+					if (i < -100f) {
 
 						moving = true;
 						i = 0f;
-
+						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 						dir = 1;
 
 						nextPos = curPos + 1;
@@ -121,13 +130,14 @@ public class LevelSwipeSel : MonoBehaviour {
 						rotateAngle = newPos.transform.rotation.y - oldPos.transform.rotation.y;
 
 						//initTouch = new Touch ();
+						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 
 
 				}
 				//initTouch = touch;
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-				i = 0;
+				//i = 0;
 
 			}
 				
@@ -146,10 +156,11 @@ public class LevelSwipeSel : MonoBehaviour {
 						if (dir == 1) {
 							i = 0f;
 							dir = -1;
+							initTouch = touch;
 						}
 						else
-							i += rotSpeed * Time.deltaTime;
-						if (i > 0.25f) {
+							i += deltaX;
+						if (i > 100f) {
 
 							moving = true;
 							i = 0f;
@@ -175,10 +186,11 @@ public class LevelSwipeSel : MonoBehaviour {
 						if (dir == -1) {
 							i = 0;
 							dir = 1;
+							initTouch = touch;
 						}
 						else
-							i -= rotSpeed * Time.deltaTime;
-						if (i < -0.25f) {
+							i += deltaX;
+						if (i < -100f) {
 
 							moving = true;
 							i = 0f;
@@ -202,7 +214,7 @@ public class LevelSwipeSel : MonoBehaviour {
 
 
 					}
-					initTouch = touch;
+					//initTouch = touch;
 
 				} else if (touch.phase == TouchPhase.Ended) {
 
@@ -242,6 +254,10 @@ public class LevelSwipeSel : MonoBehaviour {
 
 			}else{
 				moving = false;
+				i = 0f;
+				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+				if(Input.touches.Length > 0)
+					initTouch = Input.touches[0];
 				changedMat = false;
 				selectButton.enabled = true;
 				selectButton.GetComponent<Image> ().enabled = true;
