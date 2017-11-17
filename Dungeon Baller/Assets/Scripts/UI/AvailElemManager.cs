@@ -58,6 +58,9 @@ public class AvailElemManager : MonoBehaviour {
 
 			GameObject newElem = Instantiate (elem.go) as GameObject;
 			newElem.transform.SetParent (GameObject.Find ("Buttons").transform, false);
+			newElem.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 1);
+			newElem.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 1);
+			newElem.GetComponent<RectTransform> ().pivot = new Vector2 (0.5f, 0.5f);
 			newElem.GetComponent<Button> ().onClick.AddListener(delegate {placing.GetComponent<ElementPlacing>().TakeElement(elem.type);});
 				
 
@@ -76,6 +79,23 @@ public class AvailElemManager : MonoBehaviour {
 		}
 
 		return -1;
+
+	}
+
+	public void clearAll(){
+
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
+
+			if (obj.GetComponent<ElementProperties> ().removable) {
+				ep.decNum (obj.name);
+				BlockHover.hideGrid ();
+				BlockHover.hideRampGrid ();
+				ElementPlacing.holding = false;
+				ElementPlacing.currHold = "";
+				Destroy (obj);
+			}
+
+		}
 
 	}
 

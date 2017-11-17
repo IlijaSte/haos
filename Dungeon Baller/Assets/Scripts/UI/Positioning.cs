@@ -74,7 +74,7 @@ public class Positioning : MonoBehaviour {
 	}
 
 	public void RemoveElem(){
-		print (placedElem.name);
+		//print (placedElem.name);
 
 
 		if (placedElem.GetComponent<ElementProperties> ().removable) {

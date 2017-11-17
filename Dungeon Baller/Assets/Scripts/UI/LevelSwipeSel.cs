@@ -256,8 +256,8 @@ public class LevelSwipeSel : MonoBehaviour {
 				moving = false;
 				i = 0f;
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-				if(Input.touches.Length > 0)
-					initTouch = Input.touches[0];
+				//if(Input.touches.Length > 0)
+				//	initTouch = Input.touches[0];
 				changedMat = false;
 				selectButton.enabled = true;
 				selectButton.GetComponent<Image> ().enabled = true;

@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour {
 
-	float currentMusicTime;
 
-	void Start(){
+	void Awake(){
+		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Music");
+		if (objs.Length > 1) {
+			Destroy (gameObject);
+		}
 		DontDestroyOnLoad(gameObject);
 	}
 
-	void Update(){
-		currentMusicTime = GetComponent<AudioSource>().time;
-	}
-
-	void OnLevelWasLoaded(int lvl){
-		GetComponent<AudioSource>().time = currentMusicTime;
-	}
 }
