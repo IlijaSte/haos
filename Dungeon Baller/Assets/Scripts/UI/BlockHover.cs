@@ -17,6 +17,23 @@ public class BlockHover : MonoBehaviour {
 		mouseIn = true;
 	}
 
+	void OnMouseOver(){
+		mouseIn = true;
+	}
+
+	public bool checkMouseOver(){
+		Ray ray;
+		RaycastHit hit;
+		mouseIn = false;
+		ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+		if (Physics.Raycast (ray, out hit, 100)) {
+			if(hit.collider.gameObject.name == name)
+				mouseIn = true;
+		}
+
+		return mouseIn;
+	}
+
 	void OnMouseExit(){
 
 		mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a + 0.25f);

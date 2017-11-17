@@ -220,8 +220,9 @@ public class ElementPlacing : MonoBehaviour {
 				BlockHover.hideGrid ();
 				BlockHover.hideRampGrid ();
 				if (Physics.Raycast (ray, out hit, 100)) {
+					bool placed = false;
 					if (holding) {
-						
+						//print (hit.collider.gameObject.transform.parent.name);
 						if (hit.collider.gameObject != null && (hit.collider.gameObject.tag == "Spawned Objects")) {
 
 							Positioning.showButtons ();
@@ -256,7 +257,7 @@ public class ElementPlacing : MonoBehaviour {
 							//if ((bounds.Contains (hit.point) || ((rampGround != null) && rbounds.Contains(hit.point))) && !overlaping(hit.point)) {
 							if((hitGround || hitRampGround) && !overlaping(hit.point)){	
 								var script = invPanel.GetComponent<AvailElemManager> ();
-								bool placed = false;
+
 
 								GameObject newObj = null;
 
@@ -271,20 +272,23 @@ public class ElementPlacing : MonoBehaviour {
 								}
 								else if ((currHold == "ramp") && hitRampGround) {
 
-									newObj = Instantiate (ramp);
-									rampNum++;
-									newObj.name = "ramp" + rampNum;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.18f, Mathf.Round (hit.point.z));
-
+									BlockHover.showRampGrid ();
+									BlockHover.hideGrid ();
 									foreach (Transform child in GameObject.Find("RampGridBlocks").transform) {
-										if (child.gameObject.GetComponent<BlockHover> ().mouseIn) {
+										if (child.gameObject.GetComponent<BlockHover> ().checkMouseOver()) {
+											newObj = Instantiate (ramp);
+											rampNum++;
+											newObj.name = "ramp" + rampNum;
+											newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.18f, Mathf.Round (hit.point.z));
+
 											newObj.transform.rotation = child.rotation;
 											newObj.transform.position = child.position;
+											placed = true;
 											break;
 										}
 									}
 
-									placed = true;
+
 
 								} else if (currHold == "curve" && hitGround) {
 
@@ -316,28 +320,28 @@ public class ElementPlacing : MonoBehaviour {
 							}
 						}
 						
-					} else {
+					} //else {
 						
-						if (hit.collider.gameObject && (hit.collider.gameObject.tag == "Spawned Objects")) {
+					if (!placed && hit.collider.gameObject && (hit.collider.gameObject.tag == "Spawned Objects")) {
 
-							activateButtons ();
-							if (hit.collider.gameObject.name.Contains ("ramp")) {
-								BlockHover.showRampGrid ();
-								BlockHover.hideGrid ();
-							} else {
-								BlockHover.showGrid ();
-								BlockHover.hideRampGrid ();
-							}
-							//if (hit.collider.gameObject.name.Contains ("halfcurve")) {
-								
-							//	Positioning.placedElem = hit.collider.gameObject.transform.parent.gameObject;
-								//print (hit.collider.gameObject.transform.gameObject.name);
-							//}else
-							Positioning.placedElem = hit.collider.gameObject;
-
+						activateButtons ();
+						if (hit.collider.gameObject.name.Contains ("ramp")) {
+							BlockHover.showRampGrid ();
+							BlockHover.hideGrid ();
+						} else {
+							BlockHover.showGrid ();
+							BlockHover.hideRampGrid ();
 						}
+						//if (hit.collider.gameObject.name.Contains ("halfcurve")) {
+							
+						//	Positioning.placedElem = hit.collider.gameObject.transform.parent.gameObject;
+							//print (hit.collider.gameObject.transform.gameObject.name);
+						//}else
+						Positioning.placedElem = hit.collider.gameObject;
 
 					}
+
+					//}
 
 				}
 				foreach (Transform child in ground.transform) {

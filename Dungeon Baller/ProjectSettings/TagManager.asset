@@ -7,6 +7,7 @@ TagManager:
   - Spawned Objects
   - Speed Blocks
   - Pre-placed Objects
+  - Music
   layers:
   - Default
   - TransparentFX
