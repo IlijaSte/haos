@@ -1,4 +1,16 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Level7.unity
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+- path: Assets/Scenes/Level8.unity
+=======
+- path: Assets/Scenes/MainMenu.unity
+>>>>>>> 93a9dc889c2071f3ab5f44d0672c9388257e8b6a
+=======
+- path: Assets/Scenes/Floor2Selection.unity
+>>>>>>> f3da566e1a3332a8a9a485e9cecd2433dde983b7
+>>>>>>> b26473fc6e153c5bb5a2f9546618b1774583ca43
   isLoaded: 1
   isActive: 1
