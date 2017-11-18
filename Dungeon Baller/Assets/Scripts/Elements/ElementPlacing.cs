@@ -82,6 +82,7 @@ public class ElementPlacing : MonoBehaviour {
 		if (manager.GetComponent<InvOpen> ().open) {
 			manager.GetComponent<InvOpen> ().open = false;
 			panel.transform.Translate (panel.transform.right * 135 * canvas.GetComponent<Canvas>().scaleFactor);
+			panel.transform.Find ("InventoryArrow").Rotate (0, 0, 180);
 		}
 
 	}

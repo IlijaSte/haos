@@ -26,7 +26,7 @@ public class LevelSwipeSel : MonoBehaviour {
 
 		camtr = camera.GetComponent<Transform> ();
 		rotSpeed = 100f;
-
+		i = 0f;
 		LevelNameHolder lnm = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
 		if (lnm.transpWall) {
 			int numOfMats = lnm.transpWall.GetComponent<MeshRenderer> ().materials.Length;
@@ -86,7 +86,7 @@ public class LevelSwipeSel : MonoBehaviour {
 					else
 						//i += rotSpeed * Time.deltaTime;
 						i += deltaX;
-					if (i > 100f) {
+					if (i > Screen.width / 4) {
 						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 						moving = true;
 						i = 0f;
@@ -117,7 +117,7 @@ public class LevelSwipeSel : MonoBehaviour {
 					else
 						//i -= rotSpeed * Time.deltaTime;
 						i += deltaX;
-					if (i < -100f) {
+					if (i < -Screen.width / 4) {
 
 						moving = true;
 						i = 0f;
@@ -167,7 +167,7 @@ public class LevelSwipeSel : MonoBehaviour {
 						}
 						else
 							i += deltaX;
-						if (i > 100f) {
+						if (i > Screen.width / 4) {
 
 							moving = true;
 							i = 0f;
@@ -197,7 +197,7 @@ public class LevelSwipeSel : MonoBehaviour {
 						}
 						else
 							i += deltaX;
-						if (i < -100f) {
+						if (i < -Screen.width / 4) {
 
 							moving = true;
 							i = 0f;
