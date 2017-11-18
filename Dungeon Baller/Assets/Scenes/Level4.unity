@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1.34
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 67a9a41a1795d5f43b0596c1e2094a0b, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 873428116}
-  m_IndirectSpecularColor: {r: 0.4139294, g: 0.45570523, b: 0.5033085, a: 1}
+  m_IndirectSpecularColor: {r: 0.44883567, g: 0.49890018, b: 0.5756987, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2128,6 +2128,11 @@ Prefab:
     - target: {fileID: 114037308835936740, guid: afd238a96b3bd4c41b6f32f0064a182c,
         type: 2}
       propertyPath: rampNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224613139813272992, guid: afd238a96b3bd4c41b6f32f0064a182c,
+        type: 2}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4331,7 +4336,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4453,7 +4458,7 @@ MonoBehaviour:
   transpObj: {fileID: 1817667211}
   transpWall: {fileID: 1817667213}
   speed: 1
-  newTransform: {fileID: 1928042108}
+  newTransform: {fileID: 1848672490}
   topRotY: 90
 --- !u!114 &1346557166
 MonoBehaviour:
@@ -6112,7 +6117,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1848672489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.46688, y: 26.191717, z: -21.725325}
+  m_LocalPosition: {x: 0, y: 0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

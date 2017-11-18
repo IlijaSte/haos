@@ -23,6 +23,11 @@ public class TopView : MonoBehaviour {
 	private Vector3 newRot;
 	private Rigidbody rb;
 	public float topRotY = 90f;
+
+	private Material[] mats;
+	private Material[] transpMats;
+	private MeshRenderer mr;
+
 	void Start () {
 
 		mainCam = GameObject.Find ("Main Camera");
@@ -33,6 +38,15 @@ public class TopView : MonoBehaviour {
 		newPos = new Vector3 (newTransform.position.x, newTransform.position.y + 7, newTransform.position.z);
 		newRot = new Vector3 (90f, topRotY, 0);
 		rb = mainCam.GetComponent<Rigidbody> ();
+		mr = transpWall.GetComponent<MeshRenderer> ();
+		transpMats = new Material[mr.materials.Length];
+		mats = new Material[mr.materials.Length];
+		for (int j = 0; j < mats.Length; j++) {
+			mats [j] = mr.materials [j];
+			transpMats [j] = transpMat;
+			//mr.materials [j] = transpMat;
+		}
+		mr.materials = transpMats;
 	}
 		
 	public void changeToTop(GameObject go){
@@ -52,7 +66,8 @@ public class TopView : MonoBehaviour {
 				movingIn = true;
 				isTop = false;
 				go.GetComponent<MeshRenderer> ().enabled = true;
-				transpWall.GetComponent<MeshRenderer> ().material = transpMat;
+
+				mr.materials = transpMats;
 			}
 		}
 
@@ -67,7 +82,8 @@ public class TopView : MonoBehaviour {
 				rb.MoveRotation (Quaternion.Euler (Vector3.Lerp (oldCamRot.eulerAngles, newRot, i)));
 			} else {
 				movingOut = false;
-				transpWall.GetComponent<MeshRenderer> ().material = normMat;
+				//MeshRenderer mr = transpWall.GetComponent<MeshRenderer> ();
+				mr.materials = mats;
 				i = 0f;
 			}
 		} else if (movingIn) {
