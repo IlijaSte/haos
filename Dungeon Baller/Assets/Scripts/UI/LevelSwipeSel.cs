@@ -28,8 +28,15 @@ public class LevelSwipeSel : MonoBehaviour {
 		rotSpeed = 100f;
 
 		LevelNameHolder lnm = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
-		if(lnm.transpWall)
-			lnm.transpWall.GetComponent<MeshRenderer>().material = lnm.transpMaterial;
+		if (lnm.transpWall) {
+			int numOfMats = lnm.transpWall.GetComponent<MeshRenderer> ().materials.Length;
+			Material[] mats = new Material[numOfMats];
+			for (int j = 0; j < numOfMats; j++) {
+				mats [j] = lnm.transpMaterial;
+			}
+			lnm.transpWall.GetComponent<MeshRenderer> ().materials = mats;
+			lnm.transpWall.GetComponent<MeshRenderer> ().material = lnm.transpMaterial;
+		}
 	}
 
 	private bool isHoldingMouse = false;
@@ -247,8 +254,15 @@ public class LevelSwipeSel : MonoBehaviour {
 				LevelNameHolder lnmNew = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
 				if ((lnmOld.transpWall != null) && (Mathf.Abs (r) < Mathf.Abs (p / 2)) && !changedMat) {
 					
+					MeshRenderer mr = lnmNew.transpWall.GetComponent<MeshRenderer> ();
+					Material[] mats = new Material[mr.materials.Length];
 					lnmOld.transpWall.GetComponent<MeshRenderer> ().materials = lnmOld.origMaterials;
-					lnmNew.transpWall.GetComponent<MeshRenderer> ().material = lnmNew.transpMaterial;
+
+					for(int j = 0; j < mr.materials.Length; j++) {
+
+						mats[j] = lnmNew.transpMaterial;
+					}
+					mr.materials = mats;
 					changedMat = true;
 				}
 
