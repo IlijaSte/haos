@@ -8,6 +8,7 @@ TagManager:
   - Speed Blocks
   - Pre-placed Objects
   - Music
+  - Collectibles
   layers:
   - Default
   - TransparentFX

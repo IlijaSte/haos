@@ -8,10 +8,11 @@ public class LevelSwipeSel : MonoBehaviour {
 	public int curPos = 0;
 	private int nextPos = 1;
 	private float i = 0f;
+	private float j = 0f;
 	private Touch initTouch = new Touch();
 	private float deltaY;
 	public GameObject camPositions;
-	public float rotSpeed = 8f;
+	public float rotSpeed;
 	private bool moving = false;
 	public Camera camera;
 	private Transform camtr;
@@ -21,12 +22,20 @@ public class LevelSwipeSel : MonoBehaviour {
 	public bool movedByOffset;
 	private GameObject oldPos;
 	private GameObject newPos;
+
+	private GameObject dlight;
+
+	private float startLightIntensity;
+	private float endLightIntensity;
+
+	private bool darken = false;
+	private bool brighten = false;
 	// Use this for initialization
 	void Start () {
 
 		camtr = camera.GetComponent<Transform> ();
-		rotSpeed = 100f;
-
+		//rotSpeed = 100f;
+		i = 0f;
 		LevelNameHolder lnm = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
 		if (lnm.transpWall) {
 			int numOfMats = lnm.transpWall.GetComponent<MeshRenderer> ().materials.Length;
@@ -36,6 +45,13 @@ public class LevelSwipeSel : MonoBehaviour {
 			}
 			lnm.transpWall.GetComponent<MeshRenderer> ().materials = mats;
 			lnm.transpWall.GetComponent<MeshRenderer> ().material = lnm.transpMaterial;
+		}
+		dlight = GameObject.Find ("Directional Light");
+		startLightIntensity = dlight.GetComponent<Light> ().intensity;
+		endLightIntensity = dlight.GetComponent<Light> ().intensity - 0.6f;
+
+		if (!CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ().levelName)]) {
+			dlight.GetComponent<Light> ().intensity = endLightIntensity;
 		}
 	}
 
@@ -51,6 +67,18 @@ public class LevelSwipeSel : MonoBehaviour {
 		int sign = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a- b>= -360) ? 1 : -1; 
 		r *= sign;
 		return r;
+	}
+
+	public static int extractNumbers(string s){
+
+		string nums = "";
+		foreach (char c in s) {
+			if (c >= '0' && c <= '9') {
+				nums += c;
+			}
+		}
+		return int.Parse (nums);
+
 	}
 
 	bool changedMat = false;
@@ -86,15 +114,28 @@ public class LevelSwipeSel : MonoBehaviour {
 					else
 						//i += rotSpeed * Time.deltaTime;
 						i += deltaX;
-					if (i > 100f) {
+					if (i > Screen.width / 5) {
 						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 						moving = true;
 						i = 0f;
 						dir = -1;
 
 						nextPos = curPos - 1;
+
+
+
 						if (nextPos < 0) {
 							nextPos = camPositions.transform.childCount - 1;
+						}
+
+						if (!CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ().levelName)]) {
+							if(CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ().levelName)])
+								darken = true;
+							j = 0f;
+						} else {
+							if(!CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ().levelName)])
+								brighten = true;
+							j = 0f;
 						}
 
 						oldPos = camPositions.transform.GetChild (curPos).gameObject;
@@ -117,7 +158,7 @@ public class LevelSwipeSel : MonoBehaviour {
 					else
 						//i -= rotSpeed * Time.deltaTime;
 						i += deltaX;
-					if (i < -100f) {
+					if (i < -Screen.width / 5) {
 
 						moving = true;
 						i = 0f;
@@ -125,8 +166,20 @@ public class LevelSwipeSel : MonoBehaviour {
 						dir = 1;
 
 						nextPos = curPos + 1;
+
 						if (nextPos == camPositions.transform.childCount)
 							nextPos = 0;
+
+						if (!CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ().levelName)]) {
+							if(CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ().levelName)])
+								darken = true;
+							j = 0f;
+							//print (extractNumbers (camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ().levelName));
+						} else {
+							j = 0f;
+							if(!CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ().levelName)])
+								brighten = true;
+						}
 
 						oldPos = camPositions.transform.GetChild (curPos).gameObject;
 						newPos = camPositions.transform.GetChild (nextPos).gameObject;
@@ -167,7 +220,7 @@ public class LevelSwipeSel : MonoBehaviour {
 						}
 						else
 							i += deltaX;
-						if (i > 100f) {
+						if (i > Screen.width / 5) {
 
 							moving = true;
 							i = 0f;
@@ -197,7 +250,7 @@ public class LevelSwipeSel : MonoBehaviour {
 						}
 						else
 							i += deltaX;
-						if (i < -100f) {
+						if (i < -Screen.width / 5) {
 
 							moving = true;
 							i = 0f;
@@ -246,8 +299,9 @@ public class LevelSwipeSel : MonoBehaviour {
 
 			float offset = movedByOffset ? -0.5f : 0;
 
-			if (Mathf.Abs (r) > 0.25f) {
+			if (Mathf.Abs (r) > 2f) {
 				//if(i < 1f){
+
 				camtr.RotateAround (new Vector3 (offset, camtr.position.y, offset), Vector3.up, dir * tmp);
 				//camtr.rotation = Quaternion.Euler (Vector3.Lerp (camtr.rotation.eulerAngles, newPos.transform.rotation.eulerAngles, dir * tmp));
 				LevelNameHolder lnmOld = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
@@ -268,17 +322,40 @@ public class LevelSwipeSel : MonoBehaviour {
 
 			}else{
 				moving = false;
+
 				i = 0f;
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 				//if(Input.touches.Length > 0)
 				//	initTouch = Input.touches[0];
 				changedMat = false;
-				selectButton.enabled = true;
-				selectButton.GetComponent<Image> ().enabled = true;
-				selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
+				if (CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ().levelName)]) {
+					selectButton.enabled = true;
+					selectButton.GetComponent<Image> ().enabled = true;
+					selectButton.transform.GetChild (0).GetComponent<Text> ().enabled = true;
+				}
+
+
 				curPos = nextPos;
 			}
 
+		}
+
+		if (darken) {
+			j += Time.deltaTime * 1.25f;
+			if (j < 1) {
+				dlight.GetComponent<Light> ().intensity = Mathf.Lerp (startLightIntensity, endLightIntensity, j);
+			} else {
+				darken = false;
+				j = 0f;
+			}
+		} else if (brighten) {
+			j += Time.deltaTime * 1.25f;
+			if (j < 1) {
+				dlight.GetComponent<Light> ().intensity = Mathf.Lerp (endLightIntensity, startLightIntensity, j);
+			} else {
+				brighten = false;
+				j = 0f;
+			}
 		}
 	}
 }

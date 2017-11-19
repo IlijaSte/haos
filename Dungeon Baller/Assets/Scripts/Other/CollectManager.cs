@@ -12,6 +12,7 @@ public class CollectManager : MonoBehaviour {
 	public List<int> tempCollected = new List<int>();
 	public List<int> collected = new List<int>();
 	public static List<int>[] allCollected = new List<int>[256];
+	public static bool[] levelsPassed = new bool[256];
 
 	// Use this for initialization
 	void Start () {
