@@ -7,7 +7,20 @@ public class LevelButtonManager : MonoBehaviour {
 
 	public void startLevel(string name){
 
-		SceneManager.LoadScene (name);
+		switch (name) {
+		case "Floor2Selection":
+			if (CollectManager.totalNumCollected >= 1)
+				SceneManager.LoadScene (name);
+			break;
+		case "Floor3Selection":
+			//...
+			break;
+		default:
+			SceneManager.LoadScene (name);
+			break;
+		}
+
+			
 
 	}
 }

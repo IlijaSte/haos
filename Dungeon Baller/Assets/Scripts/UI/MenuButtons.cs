@@ -8,6 +8,7 @@ public class MenuButtons : MonoBehaviour {
 	public void StartGame(string sceneName){
 
 		SceneManager.LoadScene (sceneName);
+		SaveManager.loadGame ();
 
 	}
 

@@ -139,6 +139,8 @@ public class InvOpen : MonoBehaviour {
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			}
 		}
+
+
 	}
 
 	public void MoveInvPanel(){

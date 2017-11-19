@@ -16,6 +16,8 @@ public class BallRespawn : MonoBehaviour {
 	public PlaySimulation ps;
 	public CanvasGroup panel;
 	private static float lastPos;
+	private int levelNum = 0;
+
 	// Use this for initialization
 	void Start () {
 		t = GetComponent<Transform>();
@@ -26,6 +28,15 @@ public class BallRespawn : MonoBehaviour {
 		print (Application.persistentDataPath);
 
 		cm = GameObject.Find ("UIManager").GetComponent<CollectManager> ();
+
+		LevelNameHolder lnh = GameObject.Find ("GameController").GetComponent<LevelNameHolder> ();
+		string levelName = "";
+		foreach (char c in lnh.levelName) {
+			if (c >= '0' && c <= '9') {
+				levelName += c;
+			}
+		}
+		levelNum = int.Parse (lnh.levelName);
 	}
 
 	static public void respawnBall(){
@@ -71,6 +82,8 @@ public class BallRespawn : MonoBehaviour {
 				CollectManager.allCollected [int.Parse(GameObject.Find("GameController").GetComponent<LevelNameHolder>().levelName)].Add (collectible); 
 			}
 			cm.tempCollected.Clear ();
+
+			CollectManager.levelsPassed [levelNum] = true;
 
 			int count = stars.transform.childCount;
 			int i = 0;

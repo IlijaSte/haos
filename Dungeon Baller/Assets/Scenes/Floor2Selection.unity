@@ -666,7 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curPos: 0
   camPositions: {fileID: 498722330}
-  rotSpeed: 1.25
+  rotSpeed: 110
   camera: {fileID: 1170125396}
   selectButton: {fileID: 6420304}
   movedByOffset: 0

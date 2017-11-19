@@ -13,9 +13,13 @@ public static class SaveManager {
 	{
 		public int totalNumStars;
 		public List<int>[] allCollected;
+		public bool[] levelsPassed;
 
 		public SaveData(){
 			allCollected = new List<int>[256];
+			levelsPassed = new bool[256];
+			for(int i = 0; i < 256; i++)
+				levelsPassed[i] = false;
 		}
 			
 	}
@@ -31,7 +35,9 @@ public static class SaveManager {
 		for (int i = 0; i < 256; i++) {
 
 			saveData.allCollected[i] = CollectManager.allCollected[i];
+			saveData.levelsPassed [i] = CollectManager.levelsPassed [i];
 		}
+			
 		//OVDE SE DODAJE JOS
 
 		XmlSerializer serializer = new XmlSerializer (typeof(SaveData));
@@ -55,6 +61,7 @@ public static class SaveManager {
 		
 			for (int i = 0; i < 256; i++) {
 				CollectManager.allCollected [i] = saveData.allCollected [i];
+				CollectManager.levelsPassed [i] = saveData.levelsPassed [i];
 			}
 			//OVDE SE DODAJE JOS
 
@@ -62,7 +69,12 @@ public static class SaveManager {
 
 			for (int i = 0; i < 256; i++) {
 				CollectManager.allCollected [i] = new List<int> ();
+				CollectManager.levelsPassed [i] = false;
 			}
+			CollectManager.levelsPassed [1] = true;
+			CollectManager.levelsPassed [3] = true;
+			CollectManager.levelsPassed [7] = true;
+			//..
 
 		}
 

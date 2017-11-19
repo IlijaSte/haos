@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -106,8 +106,8 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 681, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
   controlID: 9
 --- !u!114 &6
@@ -254,8 +254,8 @@ MonoBehaviour:
     y: 0
     width: 281
     height: 635
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -365,9 +365,9 @@ MonoBehaviour:
     height: 335
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 18d7feff
-    m_LastClickedID: -76008
-    m_ExpandedIDs: 2ad7feff58dafeff48fcfeffe01cffff802fffff7853fffff46dffffe471ffffdceeffff6cf4ffff0000000050360000f6360000a2580000926100003e630000
+    m_SelectedIDs: d0290000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 9c6cf5ff5875f5ff067af5ff7a7df5ff0882f5ff588af5ffcc8ff5ff2498f5ff6ca0f5ff80b4f5ff28fef5ffaaa9f6ffcec3f6ff92cdf6ff5ed4f6ffa0dcf6ff90f0f7ffa6f0f7ff3e03f8ff5e43f8ff1a44f8ffce6cf8ffba70f8ffea74f8ff1c84f8ff22d1f8ffbedaf8ff4aeef8ff6cf7f8ffdcfef8ffd007f9ff4210f9ffac1af9ff8e23f9ff2231f9ff5a4af9ffaa8ff9ff62acf9ff24e1f9ffc2faf9ff2803faff6658faff84b0faff86b0faff80f0faffb02cfbfffc64fbfff0bdfbfff2e6fbffae02fcffe835fcff3246fcff8a58fcff3a64fcff9a75fcff748ffcff989efcff9eb3fcff5cdcfcfff211fdff1ef5feff5600ffffb812ffffbaf6ffffbcf6ffff0000000074e300005c0401006a040100863e01005a720100188501005c85010096850100c6850100dea9010010ac010034bf010000c10100f4ca010052cb010022cd010090d1010030d2010066d60100d6d8010052db010092dd010024e30100c6f40100542502005234020074340200e63402003a3502006c350200f8350200e876020018790200707b0200aa7c0200da7d02003c7e0200a8810200ba810200a48202000283020096830200389d0200f6a4020002a7020050a902004eaa020038ab02001eb002004ab00200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -386,7 +386,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
-  - Floor1Selection
+  - Floor2Selection
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -417,14 +417,14 @@ MonoBehaviour:
     width: 813
     height: 335
   m_SceneLighting: 1
-  lastFramingTime: 1255.803136962176
+  lastFramingTime: 9129.52302919325
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 58.254456, y: -92.30315, z: 40.845116}
+    m_Target: {x: -4.161585, y: -21.965385, z: -0.078897566}
     speed: 2
-    m_Value: {x: 58.254456, y: -92.30315, z: 40.845116}
+    m_Value: {x: -4.161585, y: -21.965385, z: -0.078897566}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -447,18 +447,18 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.2904582, y: -0.49362448, z: 0.17924373, w: -0.79990035}
+    m_Target: {x: 0.4387194, y: -0.5569316, z: 0.44990924, w: 0.5430784}
     speed: 2
-    m_Value: {x: -0.2904582, y: -0.49362448, z: 0.17924373, w: -0.79990035}
+    m_Value: {x: 0.4387194, y: -0.5569316, z: 0.44990924, w: 0.5430784}
   m_Size:
-    m_Target: 443.82867
+    m_Target: 30.0753
     speed: 2
-    m_Value: 443.82867
+    m_Value: 30.0753
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: 0.23053391, y: -0.34249347, z: -0.087088086, w: -0.90662456}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -528,19 +528,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Fbx
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Fbx
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 19}
-    m_SelectedIDs: 702a0000
-    m_LastClickedID: 10864
-    m_ExpandedIDs: 00000000be26000074280000f0290000642a0000702a0000962b0000402d0000ac2e0000b62f00003e360000ffffff7f
+    m_SelectedIDs: 822d0000
+    m_LastClickedID: 11650
+    m_ExpandedIDs: 00000000a426000062280000de290000542a0000622a0000962b0000462d0000ca2e0000c82f0000fc300000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -568,7 +568,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000be26000074280000f0290000642a0000702a0000962b0000402d0000ac2e0000b62f00003e360000
+    m_ExpandedIDs: 00000000a426000062280000de290000542a0000622a0000962b0000462d0000ca2e0000c82f0000fc300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -620,7 +620,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 79}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 115
 --- !u!114 &17

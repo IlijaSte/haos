@@ -78,7 +78,7 @@ public class Positioning : MonoBehaviour {
 
 
 		if (placedElem.GetComponent<ElementProperties> ().removable) {
-			ElementPlacing.currHold = ep.truncateNumbers (placedElem.name);
+			ElementPlacing.currHold = ElementPlacing.truncateNumbers (placedElem.name);
 			ElementPlacing.holding = true;
 			if(placedElem.name.Contains("ramp")){
 				BlockHover.showRampGrid();

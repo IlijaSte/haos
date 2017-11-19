@@ -119,7 +119,7 @@ public class ElementPlacing : MonoBehaviour {
 
 	}
 
-	public string truncateNumbers(string name){
+	public static string truncateNumbers(string name){
 		string nameRoot = name;
 
 		while((nameRoot[nameRoot.Length - 1] >= '0') && (nameRoot[nameRoot.Length - 1] <= '9'))
@@ -183,6 +183,16 @@ public class ElementPlacing : MonoBehaviour {
 		}
 
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Pre-placed Objects")) {
+
+			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
+
+				return true;
+
+			}
+
+		}
+
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Collectibles")) {
 
 			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
 
