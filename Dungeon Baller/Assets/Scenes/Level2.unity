@@ -4020,7 +4020,7 @@ MonoBehaviour:
   transpObj: {fileID: 1817667211}
   transpWall: {fileID: 1817667213}
   speed: 1
-  newTransform: {fileID: 1928042108}
+  newTransform: {fileID: 1848672490}
   topRotY: 90
 --- !u!114 &1346557166
 MonoBehaviour:
@@ -5544,7 +5544,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1848672489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.46688, y: 26.191717, z: -21.725325}
+  m_LocalPosition: {x: 0, y: 10.054, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -83,7 +83,7 @@ public class BallRespawn : MonoBehaviour {
 			}
 			cm.tempCollected.Clear ();
 
-			CollectManager.levelsPassed [levelNum] = true;
+			CollectManager.levelsPassed [levelNum + 1] = true;
 
 			int count = stars.transform.childCount;
 			int i = 0;
