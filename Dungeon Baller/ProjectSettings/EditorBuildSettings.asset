@@ -41,3 +41,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Floor2Selection.unity
     guid: 5d9a1c94527769b478fd56f2a14da514
+  - enabled: 1
+    path: Assets/Scenes/Floor3Selection.unity
+    guid: dfef450dd5b90684fa8de9db76cbcb12

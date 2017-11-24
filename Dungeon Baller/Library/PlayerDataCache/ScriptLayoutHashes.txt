@@ -114,7 +114,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MenuButtons
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LevelButtonManager
-74be4bc7c3470357850c6a85cc079f61 Assembly-CSharp.dll:.LevelNameHolder
+5d3a82eced887e92b37e57568d096f34 Assembly-CSharp.dll:.LevelNameHolder
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -168,6 +168,6 @@ aad13be33552917ef0cc5d6236237f57 Assembly-CSharp.dll:.PlaySimulation
 b93b2a0d14c8ef58aaae77519b8f963d Assembly-CSharp.dll:.CollectDetector
 b93b2a0d14c8ef58aaae77519b8f963d Assembly-CSharp.dll:.CurveCenter
 91cf4b56c78a5bfeb47f35acf2b5c06a Assembly-CSharp.dll:.InvOpen
-1fe225817030ef1888bc81e0dc92a970 Assembly-CSharp.dll:.ElementPlacing
+fa10fe7343dfdc26bfd07b6f1431b7e0 Assembly-CSharp.dll:.ElementPlacing
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.SpikeActivation
 a8ee87bcd9cd9fd15a38f9434c37e17f Assembly-CSharp.dll:.ScrollSnapRect

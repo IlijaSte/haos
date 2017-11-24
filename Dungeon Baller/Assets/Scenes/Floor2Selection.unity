@@ -275,6 +275,7 @@ MonoBehaviour:
   transpWall: {fileID: 345372105}
   transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
   origMaterials: []
+  lockedPreview: 1
 --- !u!1 &212113334 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 3184104d00e113448b5eb8ec154540e8, type: 3}
@@ -441,6 +442,7 @@ MonoBehaviour:
   transpWall: {fileID: 212113334}
   transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
   origMaterials: []
+  lockedPreview: 1
 --- !u!1 &874407718
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curPos: 0
   camPositions: {fileID: 498722330}
-  rotSpeed: 110
+  rotSpeed: 1
   camera: {fileID: 1170125396}
   selectButton: {fileID: 6420304}
   movedByOffset: 0
@@ -1005,6 +1007,7 @@ MonoBehaviour:
   transpWall: {fileID: 1645664877}
   transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
   origMaterials: []
+  lockedPreview: 1
 --- !u!1 &1738818386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1052,7 @@ MonoBehaviour:
   transpWall: {fileID: 243332243}
   transpMaterial: {fileID: 2100000, guid: 61f4b04d2022d1d499d23ef013d460c0, type: 2}
   origMaterials: []
+  lockedPreview: 1
 --- !u!1 &2015191322
 GameObject:
   m_ObjectHideFlags: 0

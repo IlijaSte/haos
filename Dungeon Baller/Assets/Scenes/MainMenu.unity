@@ -463,8 +463,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
-  far clip plane: 20000
+  near clip plane: 3000
+  far clip plane: 16000
   field of view: 45
   orthographic: 0
   orthographic size: 1186.4825
@@ -791,7 +791,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

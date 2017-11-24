@@ -74,7 +74,7 @@ public class BallRespawn : MonoBehaviour {
 			//PlaySimulation.isSimActive = false;
 			GameObject stars = GameObject.Find("Stars");
 			//Image[] starImages = stars.GetComponentsInChildren<Image>();
-
+			GameObject.Find("Placing").GetComponent<ElementPlacing>().canPlace = true;
 			foreach (int collectible in cm.tempCollected) {
 				cm.numCollected++;
 				CollectManager.totalNumCollected++;

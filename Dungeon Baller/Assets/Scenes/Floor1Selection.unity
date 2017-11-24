@@ -275,6 +275,7 @@ MonoBehaviour:
   transpWall: {fileID: 0}
   transpMaterial: {fileID: 0}
   origMaterials: []
+  lockedPreview: 1
 --- !u!1 &498722330
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +350,7 @@ MonoBehaviour:
   transpWall: {fileID: 0}
   transpMaterial: {fileID: 0}
   origMaterials: []
+  lockedPreview: 1
 --- !u!1 &874407718
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curPos: 0
   camPositions: {fileID: 498722330}
-  rotSpeed: 125
+  rotSpeed: 0.75
   camera: {fileID: 1170125396}
   selectButton: {fileID: 6420304}
   movedByOffset: 0
