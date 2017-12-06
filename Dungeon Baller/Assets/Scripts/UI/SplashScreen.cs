@@ -14,6 +14,7 @@ public class SplashScreen : MonoBehaviour {
 		panel.alpha = 0;
 		panel.blocksRaycasts = false;
 		GameObject.Find ("UIManager").GetComponent<CollectManager> ().tempCollected.Clear ();
+		GameObject.Find ("Placing").GetComponent<ElementPlacing> ().canPlace = true;
 	}
 
 	public void nextLevel(){

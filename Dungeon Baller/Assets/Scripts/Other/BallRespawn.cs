@@ -74,7 +74,7 @@ public class BallRespawn : MonoBehaviour {
 			//PlaySimulation.isSimActive = false;
 			GameObject stars = GameObject.Find("Stars");
 			//Image[] starImages = stars.GetComponentsInChildren<Image>();
-
+			GameObject.Find("Placing").GetComponent<ElementPlacing>().canPlace = true;
 			foreach (int collectible in cm.tempCollected) {
 				cm.numCollected++;
 				CollectManager.totalNumCollected++;
@@ -83,7 +83,7 @@ public class BallRespawn : MonoBehaviour {
 			}
 			cm.tempCollected.Clear ();
 
-			CollectManager.levelsPassed [levelNum] = true;
+			CollectManager.levelsPassed [levelNum + 1] = true;
 
 			int count = stars.transform.childCount;
 			int i = 0;

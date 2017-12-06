@@ -8,6 +8,7 @@ public class LevelNameHolder : MonoBehaviour {
 	public GameObject transpWall;
 	public Material transpMaterial;
 	public Material[] origMaterials;
+	public bool lockedPreview;
 
 	void Awake(){
 		if(transpWall)

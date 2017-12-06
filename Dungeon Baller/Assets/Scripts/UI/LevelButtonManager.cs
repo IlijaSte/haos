@@ -13,7 +13,8 @@ public class LevelButtonManager : MonoBehaviour {
 				SceneManager.LoadScene (name);
 			break;
 		case "Floor3Selection":
-			//...
+			if (CollectManager.totalNumCollected >= 4)
+				SceneManager.LoadScene (name);
 			break;
 		default:
 			SceneManager.LoadScene (name);

@@ -26,7 +26,9 @@ public static class SaveManager {
 
 	public static void saveGame()
 	{
-
+		
+		if(!Directory.Exists(Application.persistentDataPath + "/save"))
+			Directory.CreateDirectory (Application.persistentDataPath + "/save");
 		FileStream fileStream = new FileStream(Application.persistentDataPath + "/save/save.sav", FileMode.Create);
 
 		SaveData saveData = new SaveData();
@@ -49,7 +51,7 @@ public static class SaveManager {
 	public static void loadGame()
 	{
 
-		if (File.Exists (Application.persistentDataPath + "/save/save.sav")) {
+		if (Directory.Exists(Application.persistentDataPath + "/save") && File.Exists (Application.persistentDataPath + "/save/save.sav")) {
 			FileStream fileStream = new FileStream (Application.persistentDataPath + "/save/save.sav", FileMode.Open);
 
 			XmlSerializer serializer = new XmlSerializer (typeof(SaveData));

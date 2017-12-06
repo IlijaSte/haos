@@ -31,7 +31,7 @@ public class ElementPlacing : MonoBehaviour {
 	public bool removeToggle;
 	public GameObject panel;
 	public GameObject canvas;
-
+	public bool canPlace = true;
 	//private ArrayList placedObjects;
 
 	// Use this for initialization
@@ -164,6 +164,9 @@ public class ElementPlacing : MonoBehaviour {
 
 	void activateButtons(){
 
+		canPlace = false;
+		BlockHover.hideGrid ();
+		BlockHover.hideRampGrid ();
 		Positioning.showButtons ();
 
 
@@ -206,25 +209,38 @@ public class ElementPlacing : MonoBehaviour {
 
 	}
 
+	public void preventPlacing(){
+		foreach (Transform child in ground.transform) {
+			child.GetComponent<MeshCollider> ().enabled = false;
+		}
+		if(rampGround)
+			foreach (Transform child in rampGround.transform) {
+				child.GetComponent<MeshCollider> ().enabled = false;
+			}
+	}
+
+	public void allowPlacing(){
+		foreach (Transform child in ground.transform) {
+			child.GetComponent<MeshCollider> ().enabled = true;
+		}
+		if(rampGround)
+			foreach (Transform child in rampGround.transform) {
+				child.GetComponent<MeshCollider> ().enabled = true;
+			}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 
-			if (!PlaySimulation.isSimActive && (!EventSystem.current.IsPointerOverGameObject())) {
+			if (canPlace && !PlaySimulation.isSimActive && (!EventSystem.current.IsPointerOverGameObject())) {
 
 				Vector2 mousePos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 				Ray ray;
 				ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
 				Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-				foreach (Transform child in ground.transform) {
-					child.GetComponent<MeshCollider> ().enabled = true;
-				}
-				if (rampGround != null) {
-					foreach (Transform child in rampGround.transform) {
-						child.GetComponent<MeshCollider> ().enabled = true;
-					}
-				}
+				allowPlacing ();
 				//ground.GetComponent<MeshCollider> ().enabled = true;
 				//rampGround.GetComponent<MeshCollider> ().enabled = true;
 			
@@ -236,11 +252,12 @@ public class ElementPlacing : MonoBehaviour {
 						//print (hit.collider.gameObject.transform.parent.name);
 						if (hit.collider.gameObject != null && (hit.collider.gameObject.tag == "Spawned Objects")) {
 
-							Positioning.showButtons ();
+
 							//if (hit.collider.gameObject.name.Contains ("halfcurve")) {
 							//	Positioning.placedElem = hit.collider.gameObject.transform.parent.gameObject;
 							//}else
 							Positioning.placedElem = hit.collider.gameObject;
+							activateButtons ();
 
 						} else {
 							bool hitGround = false;
@@ -322,10 +339,11 @@ public class ElementPlacing : MonoBehaviour {
 								if (placed && newObj) {
 
 									newObj.transform.parent = spawnedObjects.transform;
+									Positioning.placedElem = newObj;
 									activateButtons ();
 									//placedObjects.Add (newObj.transform.position);
 
-									Positioning.placedElem = newObj;
+
 										
 								}
 							}
@@ -335,7 +353,7 @@ public class ElementPlacing : MonoBehaviour {
 						
 					if (!placed && hit.collider.gameObject && (hit.collider.gameObject.tag == "Spawned Objects")) {
 
-						activateButtons ();
+
 						if (hit.collider.gameObject.name.Contains ("ramp")) {
 							BlockHover.showRampGrid ();
 							BlockHover.hideGrid ();
@@ -349,21 +367,15 @@ public class ElementPlacing : MonoBehaviour {
 							//print (hit.collider.gameObject.transform.gameObject.name);
 						//}else
 						Positioning.placedElem = hit.collider.gameObject;
+						activateButtons ();
 
 					}
 
 					//}
 
 				}
-				foreach (Transform child in ground.transform) {
-					child.GetComponent<MeshCollider> ().enabled = false;
-				}
-				if (rampGround != null) {
-					foreach (Transform child in rampGround.transform) {
-						child.GetComponent<MeshCollider> ().enabled = false;
-					}
-				}
-				if (holding) {
+				preventPlacing ();
+				if (holding && Positioning.placedElem == null) {
 					if (currHold == "ramp") {
 						BlockHover.showRampGrid ();
 						BlockHover.hideGrid ();
@@ -371,6 +383,7 @@ public class ElementPlacing : MonoBehaviour {
 						BlockHover.showGrid ();
 						BlockHover.hideRampGrid ();
 					}
+					//activateButtons ();
 				}
 			}
 
