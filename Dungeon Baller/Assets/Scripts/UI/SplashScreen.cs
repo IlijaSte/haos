@@ -9,7 +9,6 @@ public class SplashScreen : MonoBehaviour {
 
 	public void restart(){
 		BallRespawn.respawnBall ();
-		//PlaySimulation.isSimActive = false;
 		ps.PlaySim ();
 		panel.alpha = 0;
 		panel.blocksRaycasts = false;

@@ -14,6 +14,8 @@ public class CollectManager : MonoBehaviour {
 	public static List<int>[] allCollected = new List<int>[256];
 	public static bool[] levelsPassed = new bool[256];
 
+	public Material transpMat;
+
 	// Use this for initialization
 	void Start () {
 
@@ -24,15 +26,13 @@ public class CollectManager : MonoBehaviour {
 		if (allCollected [int.Parse (nameHolder.levelName)] != null) {
 			foreach (int index in allCollected[int.Parse(nameHolder.levelName)]) {
 
-				collectibles.transform.GetChild (index).GetComponent<MeshRenderer> ().enabled = false;
+				//collectibles.transform.GetChild (index).GetComponent<MeshRenderer> ().enabled = false;
+				collectibles.transform.GetChild (index).GetComponent<MeshRenderer> ().material = transpMat;
+				collectibles.transform.GetChild (index).GetComponent<CollectDetector> ().collected = true;
 				collectibles.transform.GetChild (index).GetComponent<BoxCollider> ().enabled = false;
 				i++;
 			}
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

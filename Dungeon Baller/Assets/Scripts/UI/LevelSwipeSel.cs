@@ -32,14 +32,17 @@ public class LevelSwipeSel : MonoBehaviour {
 
 	private bool darken = false;
 	private bool brighten = false;
-	// Use this for initialization
+
+	LevelNameHolder lnhCur;
+	LevelNameHolder lnhNext;
+
 	void Start () {
 
 		camtr = camera.GetComponent<Transform> ();
-		//rotSpeed = 100f;
 		i = 0f;
 		k = 0f;
 		moving = false;
+
 		LevelNameHolder lnm = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
 		if (lnm.transpWall) {
 			int numOfMats = lnm.transpWall.GetComponent<MeshRenderer> ().materials.Length;
@@ -50,6 +53,7 @@ public class LevelSwipeSel : MonoBehaviour {
 			lnm.transpWall.GetComponent<MeshRenderer> ().materials = mats;
 			lnm.transpWall.GetComponent<MeshRenderer> ().material = lnm.transpMaterial;
 		}
+
 		dlight = GameObject.Find ("Directional Light");
 		startLightIntensity = dlight.GetComponent<Light> ().intensity;
 		endLightIntensity = dlight.GetComponent<Light> ().intensity - 0.6f;
@@ -86,7 +90,7 @@ public class LevelSwipeSel : MonoBehaviour {
 	}
 
 	bool changedMat = false;
-	// Update is called once per frame
+
 	void FixedUpdate () {
 
 
@@ -107,38 +111,33 @@ public class LevelSwipeSel : MonoBehaviour {
 			if (Input.GetMouseButton (0)) {
 
 				float deltaX = initClickPos.x - Input.mousePosition.x;
-				//print (deltaX);
+
 				if (deltaX > 0) {
 
 					if (dir == 1) {
 						i = 0f;
 						dir = -1;
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+
 					}
 					else
-						//i += rotSpeed * Time.deltaTime;
+
 						i += deltaX;
 					initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					if (i > Screen.width / 5) {
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-
+						
 						i = 0f;
 						k = 0f;
 						dir = -1;
 
 						nextPos = curPos - 1;
 
-						//camtr.rotation = Quaternion.Euler(camtr.rotation.eulerAngles - Vector3.up);
-
 						if (nextPos < 0) {
 							nextPos = camPositions.transform.childCount - 1;
 						}
 
-						print ("current = " + curPos);
-						print ("next = " + nextPos);
 
-						LevelNameHolder lnhCur = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
-						LevelNameHolder lnhNext = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
+						lnhCur = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
+						lnhNext = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
 						print (lnhNext.lockedPreview);
 						if (lnhNext.lockedPreview) {
 							moving = true;
@@ -165,12 +164,14 @@ public class LevelSwipeSel : MonoBehaviour {
 								camtr.transform.parent = null;
 								Destroy (go);
 							}
-							go = new GameObject ();
-							go.transform.position = Vector3.zero;
-							go.transform.rotation = Quaternion.Euler (new Vector3 (0, camtr.rotation.eulerAngles.y, 0));
-							transform.parent = go.transform;
+							if (!lnhCur.notInCircle && !lnhNext.notInCircle) {
+								go = new GameObject ();
+								go.transform.position = Vector3.zero;
+								go.transform.rotation = Quaternion.Euler (new Vector3 (0, camtr.rotation.eulerAngles.y, 0));
+								transform.parent = go.transform;
+							}
 						}
-						//initTouch = new Touch ();
+			
 					}
 
 				} else if (deltaX < 0) {
@@ -178,10 +179,8 @@ public class LevelSwipeSel : MonoBehaviour {
 						i = 0;
 						dir = 1;
 
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 					else
-						//i -= rotSpeed * Time.deltaTime;
 						i += deltaX;
 					initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					if (i < -Screen.width / 5) {
@@ -192,28 +191,22 @@ public class LevelSwipeSel : MonoBehaviour {
 
 						dir = 1;
 
-						//camtr.rotation = Quaternion.Euler (camtr.rotation.eulerAngles + Vector3.up);
-
 						nextPos = curPos + 1;
 
 						if (nextPos == camPositions.transform.childCount)
 							nextPos = 0;
 
-						print ("current = " + curPos);
-						print ("next = " + nextPos);
+						lnhCur = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
+						lnhNext = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
 
-						LevelNameHolder lnhCur = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
-						LevelNameHolder lnhNext = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
-						print (lnhNext.lockedPreview);
 						if (lnhNext.lockedPreview) {
-							print ("test");
+
 							moving = true;
 							if (!CollectManager.levelsPassed [extractNumbers (lnhNext.levelName)]) {
 								if (CollectManager.levelsPassed [extractNumbers (lnhCur.levelName)]) {
 									darken = true;
 									j = 0f;
 								}
-								//print (extractNumbers (camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ().levelName));
 							} else {
 							
 								if (!CollectManager.levelsPassed [extractNumbers (lnhCur.levelName)]) {
@@ -232,22 +225,23 @@ public class LevelSwipeSel : MonoBehaviour {
 
 							if (go) {
 								camtr.transform.parent = null;
+								camtr.rotation = Quaternion.Euler (camtr.rotation.eulerAngles.x, go.transform.rotation.eulerAngles.y, camtr.rotation.eulerAngles.z);
 								Destroy (go);
 							}
-							go = new GameObject ();
-							go.transform.position = Vector3.zero;
-							go.transform.rotation = Quaternion.Euler (new Vector3 (0, camtr.rotation.eulerAngles.y, 0));
-							transform.parent = go.transform;
+							if (!lnhCur.notInCircle && !lnhNext.notInCircle) {
+								go = new GameObject ();
+								go.transform.position = Vector3.zero;
+								go.transform.rotation = Quaternion.Euler (new Vector3 (0, camtr.rotation.eulerAngles.y, 0));
+								transform.parent = go.transform;
+							}
 						}
-						//initTouch = new Touch ();
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+
 					}
 
 
 				}
-				//initTouch = touch;
+
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-				//i = 0;
 
 			}
 				
@@ -270,23 +264,27 @@ public class LevelSwipeSel : MonoBehaviour {
 			Vector3 rotA = new Vector3(0, camtr.rotation.eulerAngles.y, 0);
 			Vector3 rotB = new Vector3(0, newPos.transform.rotation.eulerAngles.y, 0);
 
-			//if(Vector3.Distance(rotA, rotB) > 1f){
 			int numChild = 0;
 			foreach (LevelNameHolder lnh in camPositions.GetComponentsInChildren<LevelNameHolder>()) {
 				if (lnh.lockedPreview)
 					numChild++;
 			}
 			if(k < 1){
-
-				//camtr.RotateAround (new Vector3 (offset, camtr.position.y, offset), Vector3.up, dir * tmp);
-				if (numChild == 2) {
-					go.transform.rotation = Quaternion.Euler(0, Mathf.Lerp(oldPos.transform.rotation.eulerAngles.y, oldPos.transform.rotation.eulerAngles.y + dir * 180, k), 0);
-
-				}else
-					go.transform.rotation = Quaternion.Euler(0, Quaternion.Slerp(oldPos.transform.rotation, newPos.transform.rotation, k).eulerAngles.y, 0);
-				//camtr.rotation = Quaternion.Euler (Vector3.Lerp (camtr.rotation.eulerAngles, newPos.transform.rotation.eulerAngles, dir * tmp));
 				LevelNameHolder lnmOld = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
 				LevelNameHolder lnmNew = camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ();
+				if (sub2angles (camPositions.transform.GetChild (curPos).rotation.eulerAngles.y, camPositions.transform.GetChild (nextPos).rotation.eulerAngles.y) == 180) {
+					go.transform.rotation = Quaternion.Euler (0, Mathf.Lerp (oldPos.transform.rotation.eulerAngles.y, oldPos.transform.rotation.eulerAngles.y + dir * 180, k), 0);
+
+				} else {
+					if (lnmOld.notInCircle || lnmNew.notInCircle) {
+						camtr.position = Vector3.Lerp (oldPos.transform.position, newPos.transform.position, k);
+						camtr.rotation = Quaternion.Euler (camtr.rotation.eulerAngles.x, Quaternion.Slerp (oldPos.transform.rotation, newPos.transform.rotation, k).eulerAngles.y, camtr.rotation.eulerAngles.z);
+
+					}else
+						go.transform.rotation = Quaternion.Euler (0, Quaternion.Slerp (oldPos.transform.rotation, newPos.transform.rotation, k).eulerAngles.y, 0);
+
+				}
+
 				if ((lnmOld.transpWall != null) && (Mathf.Abs (r) < Mathf.Abs (p / 2)) && !changedMat) {
 					
 					MeshRenderer mr = lnmNew.transpWall.GetComponent<MeshRenderer> ();
@@ -309,12 +307,12 @@ public class LevelSwipeSel : MonoBehaviour {
 
 				if (numChild == 2) {
 					go.transform.rotation = Quaternion.Euler(go.transform.rotation.eulerAngles.x, oldPos.transform.rotation.eulerAngles.y + dir * 180, go.transform.rotation.eulerAngles.z);
-				} else {
-					go.transform.rotation = Quaternion.Euler(go.transform.rotation.eulerAngles.x, newPos.transform.rotation.eulerAngles.y, go.transform.rotation.eulerAngles.z);
-				}
+				} //else
+					
+					//go.transform.rotation = Quaternion.Euler(go.transform.rotation.eulerAngles.x, newPos.transform.rotation.eulerAngles.y, go.transform.rotation.eulerAngles.z);
+				
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-				//if(Input.touches.Length > 0)
-				//	initTouch = Input.touches[0];
+
 				changedMat = false;
 				if (CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (nextPos).gameObject.GetComponent<LevelNameHolder> ().levelName)]) {
 					selectButton.enabled = true;

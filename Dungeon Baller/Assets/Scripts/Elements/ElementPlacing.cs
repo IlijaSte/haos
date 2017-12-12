@@ -32,12 +32,9 @@ public class ElementPlacing : MonoBehaviour {
 	public GameObject panel;
 	public GameObject canvas;
 	public bool canPlace = true;
-	//private ArrayList placedObjects;
 
-	// Use this for initialization
 	void Awake () {
 
-		//placedObjects = new ArrayList ();
 		LeftRotButton = GameObject.Find ("RotLeftButton");
 		RightRotButton = GameObject.Find ("RotRightButton");
 		CheckButton = GameObject.Find ("CheckButton");
@@ -71,12 +68,9 @@ public class ElementPlacing : MonoBehaviour {
 			removeToggle = !removeToggle;
 			if (!removeToggle) {
 				holding = false;
-				//currHold = "";
 			}
 
 		}
-
-		//print (currHold);
 
 		var manager = GameObject.Find ("UIManager");
 		if (manager.GetComponent<InvOpen> ().open) {
@@ -89,29 +83,12 @@ public class ElementPlacing : MonoBehaviour {
 
 	public int getObjectNum(string name){
 
-		/*int num = 0;
-
-		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
-
-			if (g.name.Contains (name))
-				num++;
-
-		}
-
-		return num;*/
-
 		switch (name) {
 
-		case "block":
-			return blockNum;
-		case "setdir":
-			return setdirNum;
 		case "ramp":
 			return rampNum;
 		case "curve":
 			return curveNum;
-		case "pistonblock":
-			return pistonBlockNum;
 
 		}
 
@@ -130,28 +107,18 @@ public class ElementPlacing : MonoBehaviour {
 
 	public void decNum(string name){
 		string nameRoot = truncateNumbers(name);
-		//while((nameRoot[nameRoot.Length - 1] >= '0') && (nameRoot[nameRoot.Length - 1] <= '9'))
-		//	nameRoot = nameRoot.Remove(nameRoot.Length - 1);
-		//print (nameRoot);
+
 		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
 
 			if (g.name.Contains (nameRoot)) {
 
 				switch (nameRoot) {
-				case "block":
-					blockNum--;
-					break;
-				case "setdir":
-					setdirNum--;
-					break;
+
 				case "ramp":
 					rampNum--;
 					break;
 				case "curve":
 					curveNum--;
-					break;
-				case "pistonblock":
-					pistonBlockNum--;
 					break;
 				}
 				return;
@@ -179,30 +146,22 @@ public class ElementPlacing : MonoBehaviour {
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
 			
 			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
-
 				return true;
-
 			}
 		}
 
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Pre-placed Objects")) {
 
 			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
-
 				return true;
-
 			}
-
 		}
 
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Collectibles")) {
 
 			if ((obj.transform.position.x == point.x) && (obj.transform.position.z == point.z)) {
-
 				return true;
-
 			}
-
 		}
 
 		return false;
@@ -229,7 +188,6 @@ public class ElementPlacing : MonoBehaviour {
 			}
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 
@@ -241,21 +199,15 @@ public class ElementPlacing : MonoBehaviour {
 				RaycastHit hit;
 				Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				allowPlacing ();
-				//ground.GetComponent<MeshCollider> ().enabled = true;
-				//rampGround.GetComponent<MeshCollider> ().enabled = true;
-			
+
 				BlockHover.hideGrid ();
 				BlockHover.hideRampGrid ();
 				if (Physics.Raycast (ray, out hit, 100)) {
 					bool placed = false;
 					if (holding) {
-						//print (hit.collider.gameObject.transform.parent.name);
+
 						if (hit.collider.gameObject != null && (hit.collider.gameObject.tag == "Spawned Objects")) {
 
-
-							//if (hit.collider.gameObject.name.Contains ("halfcurve")) {
-							//	Positioning.placedElem = hit.collider.gameObject.transform.parent.gameObject;
-							//}else
 							Positioning.placedElem = hit.collider.gameObject;
 							activateButtons ();
 
@@ -279,26 +231,14 @@ public class ElementPlacing : MonoBehaviour {
 										break;
 									}
 								}
-
 							}
 								
-							//if ((bounds.Contains (hit.point) || ((rampGround != null) && rbounds.Contains(hit.point))) && !overlaping(hit.point)) {
 							if((hitGround || hitRampGround) && !overlaping(hit.point)){	
 								var script = invPanel.GetComponent<AvailElemManager> ();
 
-
 								GameObject newObj = null;
 
-								if (currHold == "setdir" && hitGround) {
-								
-									newObj = Instantiate (setDir);
-									setdirNum++;
-									newObj.name = "setdir" + setdirNum;
-									newObj.GetComponent<MonoBehaviour> ().enabled = false;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y - 0.49f, Mathf.Round (hit.point.z));
-									placed = true;
-								}
-								else if ((currHold == "ramp") && hitRampGround) {
+								if ((currHold == "ramp") && hitRampGround) {
 
 									BlockHover.showRampGrid ();
 									BlockHover.hideGrid ();
@@ -316,8 +256,6 @@ public class ElementPlacing : MonoBehaviour {
 										}
 									}
 
-
-
 								} else if (currHold == "curve" && hitGround) {
 
 									newObj = Instantiate (curve);
@@ -327,32 +265,20 @@ public class ElementPlacing : MonoBehaviour {
 									placed = true;
 
 								
-								} else if (currHold == "pistonblock" && hitGround) {
-
-									newObj = Instantiate (pistonBlock);
-									pistonBlockNum++;
-									newObj.name = "pistonblock" + pistonBlockNum;
-									newObj.transform.position = new Vector3 (Mathf.Round (hit.point.x), hit.point.y + 0.45f, Mathf.Round (hit.point.z));
-									placed = true;
-
 								}
 								if (placed && newObj) {
 
 									newObj.transform.parent = spawnedObjects.transform;
 									Positioning.placedElem = newObj;
 									activateButtons ();
-									//placedObjects.Add (newObj.transform.position);
-
-
 										
 								}
 							}
 						}
 						
-					} //else {
+					}
 						
 					if (!placed && hit.collider.gameObject && (hit.collider.gameObject.tag == "Spawned Objects")) {
-
 
 						if (hit.collider.gameObject.name.Contains ("ramp")) {
 							BlockHover.showRampGrid ();
@@ -361,18 +287,11 @@ public class ElementPlacing : MonoBehaviour {
 							BlockHover.showGrid ();
 							BlockHover.hideRampGrid ();
 						}
-						//if (hit.collider.gameObject.name.Contains ("halfcurve")) {
-							
-						//	Positioning.placedElem = hit.collider.gameObject.transform.parent.gameObject;
-							//print (hit.collider.gameObject.transform.gameObject.name);
-						//}else
+
 						Positioning.placedElem = hit.collider.gameObject;
 						activateButtons ();
 
 					}
-
-					//}
-
 				}
 				preventPlacing ();
 				if (holding && Positioning.placedElem == null) {
@@ -383,11 +302,8 @@ public class ElementPlacing : MonoBehaviour {
 						BlockHover.showGrid ();
 						BlockHover.hideRampGrid ();
 					}
-					//activateButtons ();
 				}
 			}
-
 		}
 	}
-
 }

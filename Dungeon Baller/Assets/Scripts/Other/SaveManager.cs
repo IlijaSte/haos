@@ -64,6 +64,10 @@ public static class SaveManager {
 			for (int i = 0; i < 256; i++) {
 				CollectManager.allCollected [i] = saveData.allCollected [i];
 				CollectManager.levelsPassed [i] = saveData.levelsPassed [i];
+			
+				//foreach(int j in CollectManager.allCollected[i])
+				//	GameObject.Find ("Collectibles").transform.GetChild (j).GetComponent<CollectDetector> ().collected = true;
+
 			}
 			//OVDE SE DODAJE JOS
 

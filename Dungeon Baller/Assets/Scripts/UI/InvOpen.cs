@@ -58,10 +58,8 @@ public class InvOpen : MonoBehaviour {
 						initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 					else
-						//i += rotSpeed * Time.deltaTime;
 						i += deltaX;
 					if (i > 100f) {
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 
 						i = 0f;
 						dir = -1;
@@ -71,7 +69,6 @@ public class InvOpen : MonoBehaviour {
 							endPos = panel.transform.position - panel.transform.right * (135 * canvas.GetComponent<Canvas> ().scaleFactor);
 						}
 
-							//initTouch = new Touch ();
 					}
 
 				} else if (deltaX < 0) {
@@ -82,13 +79,11 @@ public class InvOpen : MonoBehaviour {
 						initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 					else
-						//i -= rotSpeed * Time.deltaTime;
 						i += deltaX;
 					if (i < -100f) {
 
 
 						i = 0f;
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 						dir = 1;
 						if (open) {
 							closing = true;
@@ -97,15 +92,11 @@ public class InvOpen : MonoBehaviour {
 							endPos = panel.transform.position + panel.transform.right * (135 * canvas.GetComponent<Canvas> ().scaleFactor);
 						}
 
-						//initTouch = new Touch ();
-						//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 					}
 
 
 				}
-				//initTouch = touch;
 				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-				//i = 0;
 
 			}
 
@@ -113,7 +104,6 @@ public class InvOpen : MonoBehaviour {
 
 		if (opening) {
 
-			//Vector3 endPos = panel.transform.position - panel.transform.right * (135 * canvas.GetComponent<Canvas> ().scaleFactor);
 			j += 3 * Time.deltaTime;
 			if (j < 1) {
 					arrow.rotation = Quaternion.Euler(Vector3.Lerp(arrowOpen, arrowClose, j));
