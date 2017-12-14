@@ -31,7 +31,6 @@ public class TopView : MonoBehaviour {
 	void Start () {
 
 		mainCam = GameObject.Find ("Main Camera");
-		//levelObj = GameObject.Find ("KULA");
 		transpWall = transpObj.GetComponent<Transform>();
 		oldCamPos = mainCam.transform.position;
 		oldCamRot = mainCam.transform.rotation;
@@ -44,7 +43,6 @@ public class TopView : MonoBehaviour {
 		for (int j = 0; j < mats.Length; j++) {
 			mats [j] = mr.materials [j];
 			transpMats [j] = transpMat;
-			//mr.materials [j] = transpMat;
 		}
 		mr.materials = transpMats;
 	}
@@ -82,7 +80,6 @@ public class TopView : MonoBehaviour {
 				rb.MoveRotation (Quaternion.Euler (Vector3.Lerp (oldCamRot.eulerAngles, newRot, i)));
 			} else {
 				movingOut = false;
-				//MeshRenderer mr = transpWall.GetComponent<MeshRenderer> ();
 				mr.materials = mats;
 				i = 0f;
 			}
@@ -96,7 +93,6 @@ public class TopView : MonoBehaviour {
 			} else {
 				movingIn = false;
 				i = 0f;
-				//moving = false;
 			}
 		}
 

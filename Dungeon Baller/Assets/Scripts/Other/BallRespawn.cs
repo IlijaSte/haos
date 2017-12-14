@@ -18,13 +18,13 @@ public class BallRespawn : MonoBehaviour {
 	private static float lastPos;
 	private int levelNum = 0;
 
-	// Use this for initialization
+	public Material origMaterial;
+
 	void Start () {
 		t = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody> ();
 		staticNext = nextLevel;
 		lastPos = respawnY;
-		//SaveManager.loadGame ();
 		print (Application.persistentDataPath);
 
 		cm = GameObject.Find ("UIManager").GetComponent<CollectManager> ();
@@ -36,7 +36,9 @@ public class BallRespawn : MonoBehaviour {
 				levelName += c;
 			}
 		}
+
 		levelNum = int.Parse (lnh.levelName);
+		SaveManager.loadGame ();
 	}
 
 	static public void respawnBall(){
@@ -53,61 +55,54 @@ public class BallRespawn : MonoBehaviour {
 
 			collectibles.transform.GetChild(index).GetComponent<BoxCollider> ().enabled = true;
 			collectibles.transform.GetChild(index).GetComponent<MeshRenderer> ().enabled = true;
-			//collectible.GetComponent<BoxCollider> ().enabled = true;
-			//collectible.transform.gameObject.GetComponent<MeshRenderer> ().enabled = true;
 
 		}
 		cm.tempCollected.Clear ();
-		//CollectDetector.numCollected = 0;
-		//GetComponent<BoxCollider> ().enabled = false;
-		//transform.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 
 	}
 
+	public void levelPassed(){
 
+		lastPos = t.position.y;
+		//PlaySimulation.isSimActive = false;
+		GameObject stars = GameObject.Find("Stars");
+		//Image[] starImages = stars.GetComponentsInChildren<Image>();
+		GameObject.Find("Placing").GetComponent<ElementPlacing>().canPlace = true;
+		foreach (int collectible in cm.tempCollected) {
+			cm.numCollected++;
+			CollectManager.totalNumCollected++;
+			GameObject.Find ("Collectibles").transform.GetChild (collectible).GetComponent<CollectDetector> ().collected = true;
+			CollectManager.allCollected [int.Parse(GameObject.Find("GameController").GetComponent<LevelNameHolder>().levelName)].Add (collectible); 
+		}
+		cm.tempCollected.Clear ();
+
+		CollectManager.levelsPassed [levelNum + 1] = true;
+
+		int count = stars.transform.childCount;
+		int i = 0;
+		List<int> collList = null;
+
+
+		foreach (Transform star in stars.transform) {
+			if (GameObject.Find("Collectibles").transform.GetChild(i).GetComponent<CollectDetector>().collected) {
+				star.gameObject.GetComponent<Image> ().sprite = star.parent.gameObject.GetComponent<StarScript>().gotImage;
+				i++;
+			} else{
+				star.gameObject.GetComponent<Image> ().sprite = star.parent.gameObject.GetComponent<StarScript>().notGotImage;
+				i++;
+			}
+		}
+
+
+		panel.alpha = 1;
+		panel.blocksRaycasts = true;
+		SaveManager.saveGame ();
+		return;
+
+	}
 
 	// Update is called once per frame
 	void Update () {
-
-		if (t.position.y < respawnY - 5 && panel.alpha != 1) {
-			lastPos = t.position.y;
-			//PlaySimulation.isSimActive = false;
-			GameObject stars = GameObject.Find("Stars");
-			//Image[] starImages = stars.GetComponentsInChildren<Image>();
-			GameObject.Find("Placing").GetComponent<ElementPlacing>().canPlace = true;
-			foreach (int collectible in cm.tempCollected) {
-				cm.numCollected++;
-				CollectManager.totalNumCollected++;
-
-				CollectManager.allCollected [int.Parse(GameObject.Find("GameController").GetComponent<LevelNameHolder>().levelName)].Add (collectible); 
-			}
-			cm.tempCollected.Clear ();
-
-			CollectManager.levelsPassed [levelNum + 1] = true;
-
-			int count = stars.transform.childCount;
-			int i = 0;
-			List<int> collList = null;
-
-
-			foreach (Transform star in stars.transform) {
-				if (!GameObject.Find("Collectibles").transform.GetChild(i).GetComponent<MeshRenderer>().enabled) {
-					star.gameObject.GetComponent<Image> ().sprite = star.parent.gameObject.GetComponent<StarScript>().gotImage;
-					i++;
-				} else{
-					star.gameObject.GetComponent<Image> ().sprite = star.parent.gameObject.GetComponent<StarScript>().notGotImage;
-					i++;
-				}
-			}
-
-
-			panel.alpha = 1;
-			panel.blocksRaycasts = true;
-			//cm.collected.Clear ();
-			SaveManager.saveGame ();
-			//SceneManager.LoadScene(nextLevel);
-			return;
-		}
 			
 	}
 }

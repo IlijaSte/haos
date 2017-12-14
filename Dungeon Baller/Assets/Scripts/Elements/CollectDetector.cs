@@ -12,6 +12,8 @@ public class CollectDetector : MonoBehaviour {
 	private int dir = -1;
 	private float yoff = 0;
 
+	public bool collected = false;
+
 	void Start(){
 		cm = GameObject.Find ("UIManager").GetComponent <CollectManager>();
 		transf = GetComponent<Transform> ();
@@ -36,7 +38,8 @@ public class CollectDetector : MonoBehaviour {
 			}
 			cm.tempCollected.Add (index);
 			GetComponent<BoxCollider> ().enabled = false;
-			transform.gameObject.GetComponent<MeshRenderer> ().enabled = false;
+			//transform.gameObject.GetComponent<MeshRenderer> ().enabled = false;
+			GetComponent<MeshRenderer>().material = cm.transpMat;
 			//Destroy (transform.gameObject);
 
 		} else {

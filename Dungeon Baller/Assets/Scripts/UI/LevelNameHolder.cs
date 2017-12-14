@@ -9,6 +9,7 @@ public class LevelNameHolder : MonoBehaviour {
 	public Material transpMaterial;
 	public Material[] origMaterials;
 	public bool lockedPreview;
+	public bool notInCircle = false;
 
 	void Awake(){
 		if(transpWall)
