@@ -10,11 +10,13 @@ public class PlaySimulation : MonoBehaviour {
 	private GameObject ball;
 	public BallRespawn br;
 	public WallTrigger wt;
+	public Positioning positioning;
 	void Start(){
 
 		oldSprite = GameObject.Find ("PlaySimButton").GetComponent<Image> ().sprite;
 		ball = GameObject.Find ("Ball");
 		isSimActive = false;
+		positioning = GameObject.Find ("UIManager").GetComponent<Positioning> ();
 	}
 
 	public void PlaySim(){
@@ -26,14 +28,6 @@ public class PlaySimulation : MonoBehaviour {
 		BlockHover.hideRampGrid ();
 
 		foreach (GameObject child in GameObject.FindGameObjectsWithTag("Spawned Objects")) {
-
-			if (child.name.Contains("setdir") ){
-				if (!isSimActive) {
-					child.GetComponent<BoxCollider> ().enabled = false;
-				}else
-					child.GetComponent<BoxCollider> ().enabled = true;
-					
-				}
 
 			foreach (MonoBehaviour script in child.GetComponents<MonoBehaviour>()) {
 
@@ -72,5 +66,6 @@ public class PlaySimulation : MonoBehaviour {
 		if (isSimActive) {
 			wt.OnMouseDown ();
 		}
+
 	}
 }
