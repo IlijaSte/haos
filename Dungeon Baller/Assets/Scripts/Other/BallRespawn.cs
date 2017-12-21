@@ -48,16 +48,19 @@ public class BallRespawn : MonoBehaviour {
 		ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 		CollectManager cm = GameObject.Find ("UIManager").GetComponent<CollectManager> ();
-		if (cm.tempCollected.Count == 0)
-			return;
-		GameObject collectibles = GameObject.Find ("Collectibles");
-		foreach (int index in cm.tempCollected) {
 
-			collectibles.transform.GetChild(index).GetComponent<BoxCollider> ().enabled = true;
-			collectibles.transform.GetChild(index).GetComponent<MeshRenderer> ().enabled = true;
+		GameObject collectibles = GameObject.Find ("Collectibles");
+		foreach (Transform child in collectibles.transform) {
+
+			child.gameObject.GetComponent<BoxCollider> ().enabled = true;
+			child.gameObject.GetComponent<MeshRenderer> ().enabled = true;
+			//collectibles.transform.GetChild(index).GetComponent<BoxCollider> ().enabled = true;
+			//collectibles.transform.GetChild(index).GetComponent<MeshRenderer> ().enabled = true;
 
 		}
 		cm.tempCollected.Clear ();
+		GameObject.Find ("Placing").GetComponent<ElementPlacing> ().canPlace = true;
+
 
 	}
 

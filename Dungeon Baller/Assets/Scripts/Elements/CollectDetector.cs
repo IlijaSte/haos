@@ -26,20 +26,22 @@ public class CollectDetector : MonoBehaviour {
 
 			//numCollected++;
 			//totalNumCollected++;
-			int i = 0;
-			int index = 0;
+			if (GetComponent<MeshRenderer> ().material != cm.transpMat) {
+				int i = 0;
+				int index = 0;
 
-			foreach (Transform child in transform.parent.transform) {
-				if (child == transform) {
-					index = i;
-					break;
+				foreach (Transform child in transform.parent.transform) {
+					if (child == transform) {
+						index = i;
+						break;
+					}
+					i++;
 				}
-				i++;
+				cm.tempCollected.Add (index);
+				//GetComponent<BoxCollider> ().enabled = false;
 			}
-			cm.tempCollected.Add (index);
-			GetComponent<BoxCollider> ().enabled = false;
-			//transform.gameObject.GetComponent<MeshRenderer> ().enabled = false;
-			GetComponent<MeshRenderer>().material = cm.transpMat;
+			GetComponent<MeshRenderer> ().enabled = false;
+			//GetComponent<MeshRenderer>().material = cm.transpMat;
 			//Destroy (transform.gameObject);
 
 		} else {

@@ -27,10 +27,12 @@ public class Positioning : MonoBehaviour {
 		if (isPositioning) {
 			
 			hideButtons ();
-			if (placedElem.name.Contains("ramp")) {
-				BlockHover.showRampGrid ();
-			}else
-				BlockHover.showGrid ();
+			if (!PlaySimulation.isSimActive) {
+				if (placedElem.name.Contains ("ramp")) {
+					BlockHover.showRampGrid ();
+				} else
+					BlockHover.showGrid ();
+			}
 			//BlockHover.hideRampGrid ();
 			ep.canPlace = true;
 			placedElem = null;

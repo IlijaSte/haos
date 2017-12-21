@@ -29,7 +29,7 @@ public class CollectManager : MonoBehaviour {
 				//collectibles.transform.GetChild (index).GetComponent<MeshRenderer> ().enabled = false;
 				collectibles.transform.GetChild (index).GetComponent<MeshRenderer> ().material = transpMat;
 				collectibles.transform.GetChild (index).GetComponent<CollectDetector> ().collected = true;
-				collectibles.transform.GetChild (index).GetComponent<BoxCollider> ().enabled = false;
+				//collectibles.transform.GetChild (index).GetComponent<BoxCollider> ().enabled = false;
 				i++;
 			}
 		}
