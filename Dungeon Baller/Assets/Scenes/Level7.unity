@@ -3990,7 +3990,7 @@ Transform:
   m_Children:
   - {fileID: 85352230}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1225422631
 Prefab:
@@ -4090,7 +4090,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1238992303
 Prefab:
@@ -4660,6 +4660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   br: {fileID: 852841622}
   wt: {fileID: 221073714}
+  positioning: {fileID: 0}
 --- !u!114 &1346557165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4908,7 +4909,7 @@ Transform:
   m_Children:
   - {fileID: 609524133}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1369200134
 Rigidbody:
@@ -5194,7 +5195,7 @@ Prefab:
     - target: {fileID: 224613139813272992, guid: afd238a96b3bd4c41b6f32f0064a182c,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -270.8179
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afd238a96b3bd4c41b6f32f0064a182c, type: 2}
@@ -6967,7 +6968,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2045608925
 Prefab:

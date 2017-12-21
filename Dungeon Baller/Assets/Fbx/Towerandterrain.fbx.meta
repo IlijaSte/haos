@@ -20,6 +20,9 @@ ModelImporter:
     100024: lvl8
     100026: Terrain
     100028: tree2
+    100030: Chains
+    100032: TreesNew
+    100034: waterfall
     400000: Cylinder
     400002: Plane
     400004: Tower
@@ -35,6 +38,9 @@ ModelImporter:
     400024: lvl8
     400026: Terrain
     400028: tree2
+    400030: Chains
+    400032: TreesNew
+    400034: waterfall
     2300000: Cylinder
     2300002: Plane
     2300004: Tower
@@ -49,6 +55,9 @@ ModelImporter:
     2300022: lvl8
     2300024: Terrain
     2300026: tree2
+    2300028: Chains
+    2300030: TreesNew
+    2300032: waterfall
     3300000: Cylinder
     3300002: Plane
     3300004: Tower
@@ -63,6 +72,9 @@ ModelImporter:
     3300022: lvl8
     3300024: Terrain
     3300026: tree2
+    3300028: Chains
+    3300030: TreesNew
+    3300032: waterfall
     4300000: tree.003
     4300002: tree
     4300004: tree.002
@@ -77,6 +89,9 @@ ModelImporter:
     4300022: Bridge
     4300024: lvl7
     4300026: lvl8
+    4300028: TreesNew
+    4300030: Chains
+    4300032: waterfall
   materials:
     importMaterials: 1
     materialName: 0
