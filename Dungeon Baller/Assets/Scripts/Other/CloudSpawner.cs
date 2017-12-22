@@ -23,8 +23,8 @@ public class CloudSpawner : MonoBehaviour {
 		}
 		for (int i = 0; i < j; i++) {
 			GameObject newCloud = Instantiate (cloudPrefab);
-			newCloud.transform.position = new Vector3 (Random.Range(-500, 3000), Random.Range (2000, 3000), Random.Range(-5000, -2000));
-			newCloud.transform.localScale = new Vector3 (Random.Range (5, 8) * 50, 50, Random.Range (3, 5) * 50);
+			newCloud.transform.position = new Vector3 (Random.Range(-500, 3000), Random.Range (11000, 16000), Random.Range(-5000, -2000));
+			newCloud.transform.localScale = new Vector3 (Random.Range (8, 12) * 50, Random.Range (1, 2) * 50, Random.Range (6, 8) * 50);
 			newCloud.transform.rotation = Quaternion.Euler (0, 45, 0);
 			float cloudSpeed = Random.Range (25, 150);
 			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(-cloudSpeed, 0, cloudSpeed / 4);
@@ -36,8 +36,8 @@ public class CloudSpawner : MonoBehaviour {
 		}
 		for (int i = 0; i < j; i++) {
 			GameObject newCloud = Instantiate (cloudPrefab);
-			newCloud.transform.position = new Vector3 (Random.Range(-1000, 8000), Random.Range (2000, 3000), Random.Range(-8000, -4000));
-			newCloud.transform.localScale = new Vector3 (Random.Range (5, 8) * 50, 50, Random.Range (3, 5) * 50);
+			newCloud.transform.position = new Vector3 (Random.Range(-1000, 8000), Random.Range (11000, 16000), Random.Range(-8000, -4000));
+			newCloud.transform.localScale = new Vector3 (Random.Range (8, 12) * 50, Random.Range (1, 2) * 50, Random.Range (6, 8) * 50);
 			newCloud.transform.rotation = Quaternion.Euler (0, 45, 0);
 			float cloudSpeed = Random.Range (25, 150);
 			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(-cloudSpeed, 0, cloudSpeed / 4);
@@ -52,8 +52,8 @@ public class CloudSpawner : MonoBehaviour {
 		if (i >= 25) {
 
 			GameObject newCloud = Instantiate (cloudPrefab);
-			newCloud.transform.position = new Vector3 (Random.Range(-1000, 8000), Random.Range (2000, 3000), Random.Range(-8000, -6000));
-			newCloud.transform.localScale = new Vector3 (Random.Range (5, 8) * 50, 50, Random.Range (3, 5) * 50);
+			newCloud.transform.position = new Vector3 (Random.Range(-1000, 8000), Random.Range (11000, 16000), Random.Range(-8000, -6000));
+			newCloud.transform.localScale = new Vector3 (Random.Range (8, 12) * 50, Random.Range (1, 2) * 50, Random.Range (6, 8) * 50);
 			newCloud.transform.rotation = Quaternion.Euler (0, 45, 0);
 			float cloudSpeed = Random.Range (25, 150);
 			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(-cloudSpeed, 0, cloudSpeed / 4);

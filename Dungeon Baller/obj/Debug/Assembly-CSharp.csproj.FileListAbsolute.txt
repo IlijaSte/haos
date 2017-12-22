@@ -49,7 +49,6 @@ C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\Unity.UNe
 C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\Unity.CecilTools.dll
 C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\Mono.Cecil.Pdb.dll
 C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\Mono.Cecil.Mdb.dll
-C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\UnityEngine.xml
 C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Ilija\Desktop\Dungeon Repo\haos\Dungeon Baller\Temp\bin\Debug\UnityEngine.UI.xml

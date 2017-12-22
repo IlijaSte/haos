@@ -10,7 +10,6 @@ public class InvOpen : MonoBehaviour {
 	public GameObject canvas;
 	private RectTransform rt;
 
-	bool isHoldingMouse = false;
 	Vector2 initClickPos;
 	float i = 0;
 	float j = 0;
@@ -34,17 +33,13 @@ public class InvOpen : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (0)) {
 
-			isHoldingMouse = true;
 			initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			i = 0;
 		} else if (Input.GetMouseButtonUp (0)) {
 
-			isHoldingMouse = false;
 			i = 0;
 		}
-
 		if (!opening && !closing) {
-
 
 			if (Input.GetMouseButton (0)) {
 
