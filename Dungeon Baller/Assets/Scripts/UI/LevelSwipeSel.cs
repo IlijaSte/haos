@@ -10,7 +10,6 @@ public class LevelSwipeSel : MonoBehaviour {
 	private float i = 0f;
 	private float j = 0f;
 	private float k = 0f;
-	private Touch initTouch = new Touch();
 	private float deltaY;
 	public GameObject camPositions;
 	public float rotSpeed;
@@ -62,8 +61,7 @@ public class LevelSwipeSel : MonoBehaviour {
 			dlight.GetComponent<Light> ().intensity = endLightIntensity;
 		}
 	}
-
-	private bool isHoldingMouse = false;
+		
 	private Vector2 initClickPos;
 
 	float sub2angles(float a, float b){
@@ -96,12 +94,10 @@ public class LevelSwipeSel : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (0)) {
 
-			isHoldingMouse = true;
 			initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			i = 0;
 		} else if (Input.GetMouseButtonUp (0)) {
 
-			isHoldingMouse = false;
 			i = 0;
 		}
 

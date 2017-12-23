@@ -24,8 +24,6 @@ public class CollectDetector : MonoBehaviour {
 
 		if (GetComponent<BoxCollider> ().bounds.Contains (ball.transform.position)) {
 
-			//numCollected++;
-			//totalNumCollected++;
 			if (GetComponent<MeshRenderer> ().material != cm.transpMat) {
 				int i = 0;
 				int index = 0;
@@ -41,8 +39,6 @@ public class CollectDetector : MonoBehaviour {
 				//GetComponent<BoxCollider> ().enabled = false;
 			}
 			GetComponent<MeshRenderer> ().enabled = false;
-			//GetComponent<MeshRenderer>().material = cm.transpMat;
-			//Destroy (transform.gameObject);
 
 		} else {
 
