@@ -955,13 +955,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1407666849}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 58.31951, y: 161.5625, z: -65.08593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 58.31951, y: 105, z: -65.08593}
   m_LocalScale: {x: 1000, y: 200, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1407666851
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1080,8 +1080,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810ecbfcb7656944c8259babd424dc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudPrefab: {fileID: 1532813138392030, guid: 692c7a62c0812ac4c8bf0c5cccaf6df7,
-    type: 2}
+  cloudPrefabs:
+  - {fileID: 1561262015560476, guid: 4ca4c1a7d3cfd7b4f94b633a80b2b3bd, type: 2}
+  - {fileID: 1035880602717906, guid: c92910087d0f7bd4c8e485a98c0cb036, type: 2}
+  - {fileID: 1894990943421032, guid: 1fe68c58526b6724cb78cf75e289d935, type: 2}
+  - {fileID: 1888429628146300, guid: 1aafa15703be42c488540085e9389304, type: 2}
+  - {fileID: 1123808491841220, guid: 5b5bfef92acfb984c8229537bc850164, type: 2}
+  - {fileID: 1134423896022730, guid: fa64992c0eab3d24d890ddaa1e491ef5, type: 2}
   cloudSpace: {fileID: 1407666850}
   spawnSpeed: 0
 --- !u!4 &1613457090
