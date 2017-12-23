@@ -8,9 +8,6 @@ public class PressurePlate : MonoBehaviour {
 	private bool movingIn = false;
 	private bool movingOut = false;
 	private float i = 0f;
-	private float j = 0f;
-	private bool linkedMovingIn = false;
-	private bool linkedMovingOut = false;
 	private Rigidbody linkedrb;
 
 	private Vector3 initPos;
