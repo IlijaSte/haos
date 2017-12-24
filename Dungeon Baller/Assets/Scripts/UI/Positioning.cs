@@ -9,14 +9,12 @@ public class Positioning : MonoBehaviour {
 	static public GameObject placedElem;
 	private static Transform parent = null;
 	public ElementPlacing ep;
-	private int currX = 0;
 	private static Vector3 parentStartPos;
 	private static float buttonStartY;
 
 	void Start(){
 
 		isPositioning = false;
-		currX = 0;
 		parent = ElementPlacing.CheckButton.transform.parent;
 		parentStartPos = parent.position;
 		buttonStartY = ElementPlacing.CheckButton.transform.localPosition.y;
@@ -27,10 +25,12 @@ public class Positioning : MonoBehaviour {
 		if (isPositioning) {
 			
 			hideButtons ();
-			if (placedElem.name.Contains("ramp")) {
-				BlockHover.showRampGrid ();
-			}else
-				BlockHover.showGrid ();
+			if (!PlaySimulation.isSimActive) {
+				if (placedElem.name.Contains ("ramp")) {
+					BlockHover.showRampGrid ();
+				} else
+					BlockHover.showGrid ();
+			}
 			//BlockHover.hideRampGrid ();
 			ep.canPlace = true;
 			placedElem = null;
