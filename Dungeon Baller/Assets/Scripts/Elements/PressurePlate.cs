@@ -27,7 +27,6 @@ public class PressurePlate : MonoBehaviour {
 		if (col.gameObject.name == "Ball" && !triggered) {
 			if (!movingIn) {
 				movingIn = true;
-				linkedMovingIn = true;
 				triggered = true;
 			}
 
@@ -73,7 +72,6 @@ public class PressurePlate : MonoBehaviour {
 			} else {
 				movingIn = false;
 				movingOut = true;
-				linkedMovingIn = false;
 				i = 0f;
 			}
 

@@ -94,12 +94,10 @@ public class LevelSwipeSel : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (0)) {
 
-			isHoldingMouse = true;
 			initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			i = 0;
 		} else if (Input.GetMouseButtonUp (0)) {
 
-			isHoldingMouse = false;
 			i = 0;
 		}
 
