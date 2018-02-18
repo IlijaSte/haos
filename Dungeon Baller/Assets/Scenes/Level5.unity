@@ -4905,6 +4905,7 @@ GameObject:
   - component: {fileID: 1567033407}
   - component: {fileID: 1567033406}
   - component: {fileID: 1567033412}
+  - component: {fileID: 1567033413}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5012,6 +5013,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1567033413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1567033405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: a188f600415cf2a4cac050ae5cf715a4, type: 2}
 --- !u!4 &1615245333 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4127725125135342, guid: f153973f3defa61439d45cea85f95c68,

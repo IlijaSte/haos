@@ -551,6 +551,7 @@ GameObject:
   - component: {fileID: 1170125394}
   - component: {fileID: 1170125393}
   - component: {fileID: 1170125398}
+  - component: {fileID: 1170125399}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -645,6 +646,18 @@ MonoBehaviour:
   camera: {fileID: 1170125396}
   selectButton: {fileID: 6420304}
   movedByOffset: 0
+--- !u!114 &1170125399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1170125392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: a188f600415cf2a4cac050ae5cf715a4, type: 2}
 --- !u!1 &1201523345 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100012, guid: 41c8621d479f51a42a2406f4a48814af, type: 3}

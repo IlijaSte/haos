@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 1170125394}
   - component: {fileID: 1170125393}
   - component: {fileID: 1170125398}
+  - component: {fileID: 1170125399}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -563,7 +564,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170125392}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 61.6, z: -8.04}
+  m_LocalPosition: {x: 0, y: 66.7, z: -8.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -586,6 +587,18 @@ MonoBehaviour:
   camera: {fileID: 1170125396}
   selectButton: {fileID: 6420304}
   movedByOffset: 0
+--- !u!114 &1170125399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1170125392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: a188f600415cf2a4cac050ae5cf715a4, type: 2}
 --- !u!1 &1337135652
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +818,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.45
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
       propertyPath: m_LocalPosition.y
@@ -886,6 +899,22 @@ Prefab:
     - target: {fileID: 400004, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 400034, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400032, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e818b4fd1e4248d4ab1576cffcbf2b68, type: 3}

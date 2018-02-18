@@ -23,6 +23,13 @@ ModelImporter:
     100030: Chains
     100032: TreesNew
     100034: waterfall
+    100036: Empty
+    100038: Icosphere
+    100040: Tower_MeshPart0
+    100042: Tower_MeshPart1
+    100044: TreesNew_MeshPart0
+    100046: TreesNew_MeshPart1
+    100048: waterfall.001
     400000: Cylinder
     400002: Plane
     400004: Tower
@@ -41,6 +48,13 @@ ModelImporter:
     400030: Chains
     400032: TreesNew
     400034: waterfall
+    400036: Empty
+    400038: Icosphere
+    400040: Tower_MeshPart0
+    400042: Tower_MeshPart1
+    400044: TreesNew_MeshPart0
+    400046: TreesNew_MeshPart1
+    400048: waterfall.001
     2300000: Cylinder
     2300002: Plane
     2300004: Tower
@@ -58,6 +72,12 @@ ModelImporter:
     2300028: Chains
     2300030: TreesNew
     2300032: waterfall
+    2300034: Icosphere
+    2300036: Tower_MeshPart0
+    2300038: Tower_MeshPart1
+    2300040: TreesNew_MeshPart0
+    2300042: TreesNew_MeshPart1
+    2300044: waterfall.001
     3300000: Cylinder
     3300002: Plane
     3300004: Tower
@@ -75,6 +95,12 @@ ModelImporter:
     3300028: Chains
     3300030: TreesNew
     3300032: waterfall
+    3300034: Icosphere
+    3300036: Tower_MeshPart0
+    3300038: Tower_MeshPart1
+    3300040: TreesNew_MeshPart0
+    3300042: TreesNew_MeshPart1
+    3300044: waterfall.001
     4300000: tree.003
     4300002: tree
     4300004: tree.002
@@ -92,6 +118,12 @@ ModelImporter:
     4300028: TreesNew
     4300030: Chains
     4300032: waterfall
+    4300034: Icosphere
+    4300036: TreesNew_MeshPart0
+    4300038: TreesNew_MeshPart1
+    4300040: Tower_MeshPart0
+    4300042: Tower_MeshPart1
+    4300044: waterfall.001
   materials:
     importMaterials: 1
     materialName: 0
@@ -158,7 +190,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
