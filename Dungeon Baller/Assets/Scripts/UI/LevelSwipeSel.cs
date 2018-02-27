@@ -114,6 +114,10 @@ public class LevelSwipeSel : MonoBehaviour {
 
 				float deltaX = initClickPos.x - Input.mousePosition.x;
 
+				if (Mathf.Abs (deltaX) > Screen.width / 5) {
+					return;
+				}
+				print (deltaX);
 				if (deltaX > 0) {
 
 					if (dir == 1) {
@@ -125,6 +129,7 @@ public class LevelSwipeSel : MonoBehaviour {
 
 						i += deltaX;
 					initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+
 					if (i > Screen.width / 5) {
 						
 						i = 0f;
@@ -243,7 +248,7 @@ public class LevelSwipeSel : MonoBehaviour {
 
 				}
 
-				initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+				//initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 
 			}
 				
