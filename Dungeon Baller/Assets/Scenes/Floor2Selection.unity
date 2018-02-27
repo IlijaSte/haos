@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.06
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.16895545, g: 0.17370059, b: 0.18382353, a: 1}
+  m_AmbientSkyColor: {r: 0.6292712, g: 0.6936152, b: 0.8308824, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0.22
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.972
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1438094828}
-  m_IndirectSpecularColor: {r: 0.40002686, g: 0.45115966, b: 0.4953376, a: 0.972}
+  m_IndirectSpecularColor: {r: 0.4308917, g: 0.47792763, b: 0.5572348, a: 0.972}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -617,8 +617,8 @@ Camera:
   m_GameObject: {fileID: 1170125392}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6179715, g: 0.7408028, b: 0.9338235, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -712,8 +712,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.8980392, g: 0.7647059, b: 0.02745098, a: 1}
+  m_Intensity: 0.58
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -734,7 +734,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0.7
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0

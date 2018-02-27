@@ -11,6 +11,7 @@ public class CloudSpawner : MonoBehaviour {
 	public float spawnSpeed = 0;
 
 	void Start () {
+		// namestanje klice
 		if (spawnSpeed == 0) {
 			Random.InitState ((int)System.DateTime.Now.Ticks);
 			spawnSpeed = Random.Range (2, 4);
@@ -18,7 +19,9 @@ public class CloudSpawner : MonoBehaviour {
 		if (spawnSpeed == -1)
 			spawnSpeed = 0;
 
-		int j = 5;
+		// stvaranje prvobitnih oblaka u vidnom prostoru
+
+		int j = 2;
 		if (Random.Range (0, 2) == 1) {
 			j++;
 		}
@@ -33,10 +36,11 @@ public class CloudSpawner : MonoBehaviour {
 			newCloud.transform.position = Vector3.Lerp(newCloud.transform.position, ((Random.Range(0, 2) == 0) ? newCloud.transform.position + z:newCloud.transform.position - z), Random.Range(0f, 1f));
 			newCloud.transform.position = new Vector3 (newCloud.transform.position.x, cloudSpace.position.y + Random.Range (0, cloudSpace.localScale.y) - cloudSpace.localScale.y / 2, newCloud.transform.position.z);
 			//newCloud.transform.localScale = new Vector3 (Random.Range (8, 12) * 5, Random.Range (1, 3) * 5, Random.Range (6, 8) * 5);
-			newCloud.transform.rotation = Quaternion.Euler(cloudSpace.rotation.eulerAngles + new Vector3(0, 90, 0));
+			//newCloud.transform.rotation = Quaternion.Euler(cloudSpace.rotation.eulerAngles + new Vector3(0, 90, 0));
+			newCloud.transform.rotation = Quaternion.Euler(cloudSpace.rotation.eulerAngles + new Vector3(0, 0, -90));
 			float cloudSpeed = Random.Range (10f, 15f);
 
-			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(0, 0, cloudSpeed);
+			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(0, cloudSpeed, 0);
 			//newCloud.GetComponent<CloudMovement> ().speed = new Vector3(x1, 0, y1);
 		}
 
@@ -46,6 +50,7 @@ public class CloudSpawner : MonoBehaviour {
 
 		i += Time.deltaTime * spawnSpeed;
 
+		// stvaranje oblaka
 		if (i >= 25) {
 
 
@@ -59,10 +64,10 @@ public class CloudSpawner : MonoBehaviour {
 			newCloud.transform.position = Vector3.Lerp(newCloud.transform.position, ((Random.Range(0, 1) == 0) ? newCloud.transform.position + z:newCloud.transform.position - z), Random.Range(0f, 1f));
 			newCloud.transform.position = new Vector3 (newCloud.transform.position.x, cloudSpace.position.y + Random.Range (0, cloudSpace.localScale.y) - cloudSpace.localScale.y / 2, newCloud.transform.position.z);
 			//newCloud.transform.localScale = new Vector3 (Random.Range (8, 12) * 5, Random.Range (1, 3) * 5, Random.Range (6, 8) * 5);
-			newCloud.transform.rotation = cloudSpace.rotation;
+			newCloud.transform.rotation = Quaternion.Euler(cloudSpace.rotation.eulerAngles + new Vector3(0, 0, -90));
 			float cloudSpeed = Random.Range (5f, 8f);
 
-			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(cloudSpeed, 0, 0);
+			newCloud.GetComponent<CloudMovement> ().speed = new Vector3(0, cloudSpeed, 0);
 			//newCloud.GetComponent<CloudMovement> ().speed = new Vector3(x1, 0, y1);
 			spawnSpeed = Random.Range(2, 4);
 			i = 0f;
