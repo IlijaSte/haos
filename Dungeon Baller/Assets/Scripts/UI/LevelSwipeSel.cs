@@ -42,6 +42,7 @@ public class LevelSwipeSel : MonoBehaviour {
 		k = 0f;
 		moving = false;
 
+		// postavljanje svih materijala zida na transparentne
 		LevelNameHolder lnm = camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ();
 		if (lnm.transpWall) {
 			int numOfMats = lnm.transpWall.GetComponent<MeshRenderer> ().materials.Length;
@@ -53,10 +54,12 @@ public class LevelSwipeSel : MonoBehaviour {
 			lnm.transpWall.GetComponent<MeshRenderer> ().material = lnm.transpMaterial;
 		}
 
+		// postavljanje intenziteta svetla i tame
 		dlight = GameObject.Find ("Directional Light");
 		startLightIntensity = dlight.GetComponent<Light> ().intensity;
 		endLightIntensity = dlight.GetComponent<Light> ().intensity - 0.6f;
 
+		// ako nije predjen nivo, tama
 		if (!CollectManager.levelsPassed [extractNumbers (camPositions.transform.GetChild (curPos).gameObject.GetComponent<LevelNameHolder> ().levelName)]) {
 			dlight.GetComponent<Light> ().intensity = endLightIntensity;
 		}
@@ -64,6 +67,7 @@ public class LevelSwipeSel : MonoBehaviour {
 		
 	private Vector2 initClickPos;
 
+	// razlika dva ugla
 	float sub2angles(float a, float b){
 
 		float d = Mathf.Abs(a - b) % 360; 
@@ -91,19 +95,21 @@ public class LevelSwipeSel : MonoBehaviour {
 
 	void FixedUpdate () {
 
-
+		// klik
 		if (Input.GetMouseButtonDown (0)) {
 
 			initClickPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			i = 0;
+		// pusten klik
 		} else if (Input.GetMouseButtonUp (0)) {
 
 			i = 0;
 		}
 
+		// sprecavanje pokretanja rotiranja dok se krece kamera
 		if (!moving) {
 
-
+			// drzi se klik
 			if (Input.GetMouseButton (0)) {
 
 				float deltaX = initClickPos.x - Input.mousePosition.x;
