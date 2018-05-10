@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 1cd0bc38826b0434abc40db1c9791589
-timeCreated: 1519784024
-=======
-guid: f14d567d673378d4cad17ae3fe11c742
-timeCreated: 1520795204
->>>>>>> 8787d2c32993c088f2c1719af1dc8397e4c2df83
-licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -74,6 +67,7 @@ ModelImporter:
     4300018: Tower_MeshPart8
     4300020: Tower_MeshPart9
     4300022: Tower_MeshPart10
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -143,7 +137,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
