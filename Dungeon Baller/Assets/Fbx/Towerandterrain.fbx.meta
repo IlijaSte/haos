@@ -30,6 +30,23 @@ ModelImporter:
     100044: TreesNew_MeshPart0
     100046: TreesNew_MeshPart1
     100048: waterfall.001
+    100050: Tower_MeshPart2
+    100052: Tower_MeshPart3
+    100054: Tower_MeshPart4
+    100056: Tower_MeshPart5
+    100058: Tower_MeshPart6
+    100060: Tower_MeshPart7
+    100062: TowerBridge
+    100064: TowerBridge_MeshPart0
+    100066: TowerBridge_MeshPart1
+    100068: TowerWalls2ndFloor
+    100070: TowerWalls3rdFloor
+    100072: TowerWalls4thFloor
+    100074: TowerWalls4thFloor_MeshPart0
+    100076: TowerWalls4thFloor_MeshPart1
+    100078: TowerWalls4thFloor_MeshPart2
+    100080: TowerWalls4thFloor_MeshPart3
+    100082: TowerWalls4thFloor_MeshPart4
     400000: Cylinder
     400002: Plane
     400004: Tower
@@ -55,6 +72,23 @@ ModelImporter:
     400044: TreesNew_MeshPart0
     400046: TreesNew_MeshPart1
     400048: waterfall.001
+    400050: Tower_MeshPart2
+    400052: Tower_MeshPart3
+    400054: Tower_MeshPart4
+    400056: Tower_MeshPart5
+    400058: Tower_MeshPart6
+    400060: Tower_MeshPart7
+    400062: TowerBridge
+    400064: TowerBridge_MeshPart0
+    400066: TowerBridge_MeshPart1
+    400068: TowerWalls2ndFloor
+    400070: TowerWalls3rdFloor
+    400072: TowerWalls4thFloor
+    400074: TowerWalls4thFloor_MeshPart0
+    400076: TowerWalls4thFloor_MeshPart1
+    400078: TowerWalls4thFloor_MeshPart2
+    400080: TowerWalls4thFloor_MeshPart3
+    400082: TowerWalls4thFloor_MeshPart4
     2300000: Cylinder
     2300002: Plane
     2300004: Tower
@@ -78,6 +112,21 @@ ModelImporter:
     2300040: TreesNew_MeshPart0
     2300042: TreesNew_MeshPart1
     2300044: waterfall.001
+    2300046: Tower_MeshPart2
+    2300048: Tower_MeshPart3
+    2300050: Tower_MeshPart4
+    2300052: Tower_MeshPart5
+    2300054: Tower_MeshPart6
+    2300056: Tower_MeshPart7
+    2300058: TowerBridge_MeshPart0
+    2300060: TowerBridge_MeshPart1
+    2300062: TowerWalls2ndFloor
+    2300064: TowerWalls3rdFloor
+    2300066: TowerWalls4thFloor_MeshPart0
+    2300068: TowerWalls4thFloor_MeshPart1
+    2300070: TowerWalls4thFloor_MeshPart2
+    2300072: TowerWalls4thFloor_MeshPart3
+    2300074: TowerWalls4thFloor_MeshPart4
     3300000: Cylinder
     3300002: Plane
     3300004: Tower
@@ -101,6 +150,21 @@ ModelImporter:
     3300040: TreesNew_MeshPart0
     3300042: TreesNew_MeshPart1
     3300044: waterfall.001
+    3300046: Tower_MeshPart2
+    3300048: Tower_MeshPart3
+    3300050: Tower_MeshPart4
+    3300052: Tower_MeshPart5
+    3300054: Tower_MeshPart6
+    3300056: Tower_MeshPart7
+    3300058: TowerBridge_MeshPart0
+    3300060: TowerBridge_MeshPart1
+    3300062: TowerWalls2ndFloor
+    3300064: TowerWalls3rdFloor
+    3300066: TowerWalls4thFloor_MeshPart0
+    3300068: TowerWalls4thFloor_MeshPart1
+    3300070: TowerWalls4thFloor_MeshPart2
+    3300072: TowerWalls4thFloor_MeshPart3
+    3300074: TowerWalls4thFloor_MeshPart4
     4300000: tree.003
     4300002: tree
     4300004: tree.002
@@ -124,6 +188,21 @@ ModelImporter:
     4300040: Tower_MeshPart0
     4300042: Tower_MeshPart1
     4300044: waterfall.001
+    4300046: TowerBridge_MeshPart0
+    4300048: TowerBridge_MeshPart1
+    4300050: Tower_MeshPart2
+    4300052: Tower_MeshPart3
+    4300054: Tower_MeshPart4
+    4300056: Tower_MeshPart5
+    4300058: Tower_MeshPart6
+    4300060: Tower_MeshPart7
+    4300062: TowerWalls3rdFloor
+    4300064: TowerWalls2ndFloor
+    4300066: TowerWalls4thFloor_MeshPart0
+    4300068: TowerWalls4thFloor_MeshPart1
+    4300070: TowerWalls4thFloor_MeshPart2
+    4300072: TowerWalls4thFloor_MeshPart3
+    4300074: TowerWalls4thFloor_MeshPart4
   materials:
     importMaterials: 1
     materialName: 0
